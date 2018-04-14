@@ -1,4 +1,3 @@
-# mongodb_react_redux_addr_book
 # Address Book - MongoDB + React-Redux
 
 ## Aim
