@@ -88,7 +88,6 @@ module.exports = function (app) {
         )
     })
 
-
     app.get("/api/get/portraits", (req, res, next) => {
         Portraits.find().then(data => res.status(200).json(data))
             .catch(next)
