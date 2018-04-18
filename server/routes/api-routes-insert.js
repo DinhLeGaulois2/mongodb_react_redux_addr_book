@@ -8,24 +8,24 @@ var Thumbnails = require('../models/thumbnails.js');
 var Twitter = require('../models/twitter.js');
 
 module.exports = function (app) {
-    app.post("/api/add/contacts", (req, res) => {
+    app.post("/api/add/contacts", (req, res, next) => {
         Contacts.insertMany(req.body, (err, db) => {
-            if (err) throw err
+            if (err) throw next(err)
             res.status(200).json({ msg: "Insertion: Success!" })
         })
     })
 
-    app.post("/api/add/phone", (req, res) => {
+    app.post("/api/add/phone", (req, res, next) => {
         Phones.find(
             {
                 type: req.body.type,
                 number: req.body.number,
                 contactId: req.body.contactId
             }, (err, db) => {
-                if (err) throw err
+                if (err) throw next(err)
                 if (db.length == 0) {
                     Phones.create(req.body, (err, db) => {
-                        if (err) throw err
+                        if (err) throw next(err)
                         res.status(200).json("Insertion: Success!")
                     })
                 }

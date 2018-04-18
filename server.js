@@ -17,6 +17,11 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Point static path to dist
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// error handling middleware
+app.use((err, req, res, next) => {
+    res.status(422).send({ error: err.message })
+})
+
 // Catch all other routes and return the index file
 // app.get('/', (req, res) => {
 //   res.send("server.js - get ....");
@@ -59,6 +64,14 @@ require("./server/routes/api-routes-delete.js")(app);
 require("./server/routes/api-routes-update.js")(app);
 require("./server/routes/html-routes.js")(app);
 // -------------------------------------------------
+
+// error handling middleware
+app.use(function (err, req, res, next) {
+    res.json({ 
+        error: 422,
+        message: err.toString()
+    });
+})
 
 var initValues = require("./server/data/initDataController.js");
 
