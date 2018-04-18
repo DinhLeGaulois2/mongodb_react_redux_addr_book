@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var phonesSchema = new Schema({
     type: { type: String },
     number: { type: String },
-    contacstId: {
+    contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contacts"
     }
