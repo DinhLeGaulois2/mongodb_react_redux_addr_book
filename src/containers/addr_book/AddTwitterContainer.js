@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickBBBBBBBBBBBBB: (data) => { dispatch(actions.XXXXXXXXXXXXX(data)) },
+    onClickTwitter: (data) => { dispatch(actions.addTwitter(data)) },
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself

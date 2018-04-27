@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickDelete: (bId) => { dispatch(actions.RRRRRRRRRRRRRR(bId))}
+    onClickDelete: (bId) => { dispatch(actions.deleteGroup(bId))}
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself

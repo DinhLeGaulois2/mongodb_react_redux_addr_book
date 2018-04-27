@@ -5,8 +5,8 @@ import cst from '../../constants/addr_book/cst'
 
 import '../../style.scss'
 
-// import DisplayDptContainer from '../../containers/addr_book/DisplayDptContainer'
-// import DisplayEmpContainer from '../../containers/addr_book/DisplayEmpContainer'
+import ShowContactsContainer from '../../containers/addr_book/ShowContactsContainer'
+import ShowGroupsContainer from '../../containers/addr_book/ShowGroupsContainer'
 
 
 const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
@@ -14,22 +14,22 @@ const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
         <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
             <button type="button" className="btn" onClick={e => {
                 e.preventDefault()
-                onClickChangeStatus("", cst.DISPLAY_DPT)
-            }}>Show Departments</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                onClickChangeStatus("", cst.LIST_CONTACTS)
+            }}>Show Contacts</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" className="btn" onClick={e => {
                 e.preventDefault()
-                onClickChangeStatus("", cst.DISPLAY_EMP)
-            }}>Show Employees</button>
+                onClickChangeStatus("", cst.LIST_GROUPS)
+            }}>Show Groups</button>
             <br />
         </td></tr></tbody></table>
         {menuStatus == cst.MENU_DISPLAY &&
             <div>
-                {/* {status === cst.DISPLAY_DPT_SUCCESS &&
-                    <DisplayDptContainer />
+                {status === cst.LIST_CONTACTS_SUCCESS &&
+                    <ShowContactsContainer />
                 }
-                {status === cst.DISPLAY_EMP_SUCCESS &&
-                    <DisplayEmpContainer />
-                } */}
+                {status === cst.LIST_GROUPS_SUCCESS &&
+                    <ShowGroupsContainer />
+                }
             </div>
         }
     </div>
