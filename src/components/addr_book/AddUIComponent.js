@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import '../../style.scss'
-import cst from '../../constants/employees_organizer/cst'
+import cst from '../../constants/addrbook/cst'
 
-import AddDptContainer from '../../containers/employees_organizer/AddDptContainer'
-import AddEmpContainer from '../../containers/employees_organizer/AddEmpContainer'
+// import AddDptContainer from '../../containers/addrbook/AddDptContainer'
+// import AddEmpContainer from '../../containers/addrbook/AddEmpContainer'
 
 const AddUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
     <div style={{ 'backgroundColor': 'gray' }}>
@@ -22,12 +22,12 @@ const AddUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
         </td></tr></tbody></table>
         {menuStatus == cst.MENU_ADD &&
             <div>
-                {status === cst.ADD_DPT &&
+                {/* {status === cst.ADD_DPT &&
                     <AddDptContainer />
                 }
                 {status === cst.ADD_EMP &&
                     <AddEmpContainer />
-                }
+                } */}
             </div>
         }
     </div>

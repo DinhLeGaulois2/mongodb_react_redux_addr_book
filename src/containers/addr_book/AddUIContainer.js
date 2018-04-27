@@ -1,12 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import actions from '../../actions/employees_organizer/employees_organizer_actions'
-import AddUIComponent from '../../components/employees_organizer/AddUIComponent'
+import actions from '../../actions/addr_book/employees_organizer_actions'
+import AddUIComponent from '../../components/addr_book/AddUIComponent'
 
 const mapStateToProps = (state) => ({
-    status: state.empl.status,
-    menuStatus: state.empl.menuStatus
+    status: state.addrbook.status,
+    menuStatus: state.addrbook.menuStatus
 })
 
 const mapDispatchToProps = (dispatch) => ({

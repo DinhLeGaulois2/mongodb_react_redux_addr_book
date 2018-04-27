@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import cst from '../../constants/employees_organizer/cst'
+import cst from '../../constants/addrbook/cst'
 
 import '../../style.scss'
 
-import DisplayDptContainer from '../../containers/employees_organizer/DisplayDptContainer'
-import DisplayEmpContainer from '../../containers/employees_organizer/DisplayEmpContainer'
+// import DisplayDptContainer from '../../containers/addrbook/DisplayDptContainer'
+// import DisplayEmpContainer from '../../containers/addrbook/DisplayEmpContainer'
 
 
 const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
@@ -24,12 +24,12 @@ const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
         </td></tr></tbody></table>
         {menuStatus == cst.MENU_DISPLAY &&
             <div>
-                {status === cst.DISPLAY_DPT_SUCCESS &&
+                {/* {status === cst.DISPLAY_DPT_SUCCESS &&
                     <DisplayDptContainer />
                 }
                 {status === cst.DISPLAY_EMP_SUCCESS &&
                     <DisplayEmpContainer />
-                }
+                } */}
             </div>
         }
     </div>
