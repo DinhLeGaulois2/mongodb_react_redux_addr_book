@@ -67,7 +67,7 @@ require("./server/routes/html-routes.js")(app);
 
 // error handling middleware
 app.use(function (err, req, res, next) {
-    res.json({ 
+    res.json({
         error: 422,
         message: err.toString()
     });
@@ -75,10 +75,17 @@ app.use(function (err, req, res, next) {
 
 var initValues = require("./server/data/initDataController.js");
 
-/**
- * Listen on provided port, on all network interfaces.
- */
-server.listen(port, () => {
-    // initValues();
-    console.log("App listening on PORT: " + port);
-});
+const startServer = () => {    
+    server.listen(port, () => {
+        console.log("App listening on PORT: " + port);
+    });
+}
+
+// "startServer" will be a callback
+// Explanation: we start the server only when every init
+//    values are inserted
+initValues(startServer)
+
+// server.listen(port, () => {
+//     console.log("App listening on PORT: " + port);
+// });
