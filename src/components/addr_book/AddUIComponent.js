@@ -2,10 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import '../../style.scss'
-import cst from '../../constants/addrbook/cst'
+import cst from '../../constants/addr_book/cst'
 
-// import AddDptContainer from '../../containers/addrbook/AddDptContainer'
-// import AddEmpContainer from '../../containers/addrbook/AddEmpContainer'
+// import AddDptContainer from '../../containers/addr_book/AddDptContainer'
+// import AddEmpContainer from '../../containers/addr_book/AddEmpContainer'
 
 const AddUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
     <div style={{ 'backgroundColor': 'gray' }}>

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import cst from '../../constants/addrbook/cst'
+import cst from '../../constants/addr_book/cst'
 
 import '../../style.scss'
 
-// import DisplayDptContainer from '../../containers/addrbook/DisplayDptContainer'
-// import DisplayEmpContainer from '../../containers/addrbook/DisplayEmpContainer'
+// import DisplayDptContainer from '../../containers/addr_book/DisplayDptContainer'
+// import DisplayEmpContainer from '../../containers/addr_book/DisplayEmpContainer'
 
 
 const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (

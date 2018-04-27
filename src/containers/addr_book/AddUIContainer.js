@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import actions from '../../actions/addr_book/employees_organizer_actions'
+import actions from '../../actions/addr_book/actions'
 import AddUIComponent from '../../components/addr_book/AddUIComponent'
 
 const mapStateToProps = (state) => ({

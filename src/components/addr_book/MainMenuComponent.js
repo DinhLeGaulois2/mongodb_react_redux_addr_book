@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import cst from '../../constants/addrbook/cst'
+import cst from '../../constants/addr_book/cst'
 
 import '../../style.scss'
 
-import AddUIContainer from '../../containers/addrbook/AddUIContainer'
-import DisplayUIContainer from '../../containers/addrbook/DisplayUIContainer'
+import AddUIContainer from '../../containers/addr_book/AddUIContainer'
+import DisplayUIContainer from '../../containers/addr_book/DisplayUIContainer'
 
 const MainMenuComponent = ({ menuStatus, changeStatus }) =>
     <div>

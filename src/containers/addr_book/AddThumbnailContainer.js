@@ -1,23 +1,21 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import DisplayUIComponent from '../../components/addr_book/DisplayUIComponent'
 import actions from '../../actions/addr_book/actions'
+import AddThumbnailComponent from '../../components/addr_book/AddThumbnailComponent'
 
 const mapStateToProps = (state) => ({
-    status: state.addrbook.status,
-    menuStatus: state.addrbook.menuStatus
+    data: state.addrbook.data,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickChangeStatus: (p1, p2) => { dispatch(actions.setStatus(p1, p2))}
+    onClickBBBBBBBBBBBBB: (data) => { dispatch(actions.XXXXXXXXXXXXX(data)) },
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
-const DisplayUIContainer = connect(
+const AddThumbnailContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(DisplayUIComponent)
+)(AddThumbnailComponent)
 
-export default DisplayUIContainer
-
+export default AddThumbnailContainer

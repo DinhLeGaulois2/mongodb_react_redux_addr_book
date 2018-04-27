@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import MainMenuComponent from '../../components/addr_book/MainMenuComponent'
-import actions from '../../actions/addr_book/addr_book_actions'
+import actions from '../../actions/addr_book/actions'
 
 const mapStateToProps = (state) => ({
     menuStatus: state.addrbook.menuStatus
