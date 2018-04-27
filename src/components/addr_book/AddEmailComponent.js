@@ -13,7 +13,7 @@ const validate = values => {
     return errors
 }
 
-let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset }) => (
+let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddEmail }) => (
         <div>
             <div className="container" style={{ 'backgroundColor': 'white' }}>
                 <div align="center" className="mainTitle" style={{
@@ -26,10 +26,10 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset }) => (
                     'fontWeight': 'bold',
                     'textAlign': 'center',
                     'margin': '20px 0px'
-                }}>MMMMMMMMMMM</div>
+                }}>Add Email</div>
             </div>
             <br />
-            <form onSubmit={handleSubmit(onClickRRRRRRRR)}>
+            <form onSubmit={handleSubmit(onClickAddEmail)}>
                 <div>
                 </div>
                 <br /> <hr />
@@ -41,6 +41,7 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset }) => (
     )
 
 AddEmailComponent.propTypes = {
+    onClickAddEmail: PropTypes.func.isRequired
 }
 
 // Reset the form after submission

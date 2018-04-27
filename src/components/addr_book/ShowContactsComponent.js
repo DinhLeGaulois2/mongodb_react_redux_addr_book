@@ -7,31 +7,19 @@ import Modal from '../../common/modal/modal'
 
 import cst from '../../constants/addr_book/cst'
 
-const ShowContactsComponentItem = ({  }) =>
-    <td style={{ 'backgroundColor': 'black', 'color': 'cyan', 'padding': '10px', 'margin': '5px', 'borderStyle': 'solid', 'borderColor': 'gray' }}>
-
-    </td>
-
-const ShowContactsComponent = ({  }) => (
+const ShowContactsComponent = ({ data, onClickDelete }) => (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
-            {HHHHHHHHHHHHH.map((HHHH, index) =>
+            {data.map((d, index) =>
                 <tr key={index}>
-                    <ShowContactsComponentItem
-                        key={HHHH.id}
-                        {...HHHH}
-                        HHHH={onClickDelete}
-                    />
                 </tr>
             )}
         </tbody></table>
     </div>
 )
 
-ShowContactsComponentItem.propTypes = {
-}
-
 ShowContactsComponent.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({})),
     onClickDelete: PropTypes.func.isRequired
 }
 

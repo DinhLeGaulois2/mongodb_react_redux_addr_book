@@ -13,7 +13,7 @@ const validate = values => {
     return errors
 }
 
-let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset }) => (
+let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddGroup }) => (
         <div>
             <div className="container" style={{ 'backgroundColor': 'white' }}>
                 <div align="center" className="mainTitle" style={{
@@ -26,10 +26,10 @@ let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset }) => (
                     'fontWeight': 'bold',
                     'textAlign': 'center',
                     'margin': '20px 0px'
-                }}>MMMMMMMMMMM</div>
+                }}>Add Group</div>
             </div>
             <br />
-            <form onSubmit={handleSubmit(onClickRRRRRRRR)}>
+            <form onSubmit={handleSubmit(onClickAddGroup)}>
                 <div>
                 </div>
                 <br /> <hr />
@@ -41,6 +41,7 @@ let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset }) => (
     )
 
 AddGroupComponent.propTypes = {
+    onClickAddGroup: PropTypes.func.isRequired
 }
 
 // Reset the form after submission

@@ -26,7 +26,7 @@ let AddTwitterComponent = ({ handleSubmit, invalid, submitting, reset }) => (
                     'fontWeight': 'bold',
                     'textAlign': 'center',
                     'margin': '20px 0px'
-                }}>MMMMMMMMMMM</div>
+                }}>Add Twitter</div>
             </div>
             <br />
             <form onSubmit={handleSubmit(onClickRRRRRRRR)}>
@@ -41,6 +41,7 @@ let AddTwitterComponent = ({ handleSubmit, invalid, submitting, reset }) => (
     )
 
 AddTwitterComponent.propTypes = {
+    onClickAddTwitter: PropTypes.func.isRequired
 }
 
 // Reset the form after submission

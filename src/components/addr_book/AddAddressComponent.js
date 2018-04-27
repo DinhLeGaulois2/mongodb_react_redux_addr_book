@@ -13,7 +13,7 @@ const validate = values => {
     return errors
 }
 
-let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset }) => (
+let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddAddress }) => (
         <div>
             <div className="container" style={{ 'backgroundColor': 'white' }}>
                 <div align="center" className="mainTitle" style={{
@@ -26,10 +26,10 @@ let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset }) => (
                     'fontWeight': 'bold',
                     'textAlign': 'center',
                     'margin': '20px 0px'
-                }}>MMMMMMMMMMM</div>
+                }}>Add Address</div>
             </div>
             <br />
-            <form onSubmit={handleSubmit(onClickRRRRRRRR)}>
+            <form onSubmit={handleSubmit(onClickAddAddress)}>
                 <div>
                 </div>
                 <br /> <hr />
@@ -41,6 +41,7 @@ let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset }) => (
     )
 
 AddAddressComponent.propTypes = {
+    onClickAddAddress: PropTypes.func.isRequired
 }
 
 // Reset the form after submission

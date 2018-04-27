@@ -7,31 +7,19 @@ import Modal from '../../common/modal/modal'
 
 import cst from '../../constants/addr_book/cst'
 
-const ShowGroupsComponentItem = ({  }) =>
-    <td style={{ 'backgroundColor': 'black', 'color': 'cyan', 'padding': '10px', 'margin': '5px', 'borderStyle': 'solid', 'borderColor': 'gray' }}>
-
-    </td>
-
-const ShowGroupsComponent = ({  }) => (
+const ShowGroupsComponent = ({ data, onClickDelete }) => (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
-            {HHHHHHHHHHHHH.map((HHHH, index) =>
-                <tr key={index}>
-                    <ShowGroupsComponentItem
-                        key={HHHH.id}
-                        {...HHHH}
-                        HHHH={onClickDelete}
-                    />
+            {data.map((d, index) =>
+                <tr key={index}>                    
                 </tr>
             )}
         </tbody></table>
     </div>
 )
 
-ShowGroupsComponentItem.propTypes = {
-}
-
 ShowGroupsComponent.propTypes = {
+    data: PropTypes.arrayOf(PropTypes.shape({})),
     onClickDelete: PropTypes.func.isRequired
 }
 

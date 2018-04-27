@@ -4,17 +4,13 @@ import { connect } from 'react-redux'
 import actions from '../../actions/addr_book/actions'
 import AddPortraitComponent from '../../components/addr_book/AddPortraitComponent'
 
-const mapStateToProps = (state) => ({
-    data: state.addrbook.data,
-})
-
 const mapDispatchToProps = (dispatch) => ({
     onClickAddPortrait: (data) => { dispatch(actions.addPortrait(data)) },
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
 const AddPortraitContainer = connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
 )(AddPortraitComponent)
 

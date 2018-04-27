@@ -13,7 +13,7 @@ const validate = values => {
     return errors
 }
 
-let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset }) => (
+let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddPortrait }) => (
         <div>
             <div className="container" style={{ 'backgroundColor': 'white' }}>
                 <div align="center" className="mainTitle" style={{
@@ -26,10 +26,10 @@ let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset }) => (
                     'fontWeight': 'bold',
                     'textAlign': 'center',
                     'margin': '20px 0px'
-                }}>MMMMMMMMMMM</div>
+                }}>Add Portrait</div>
             </div>
             <br />
-            <form onSubmit={handleSubmit(onClickRRRRRRRR)}>
+            <form onSubmit={handleSubmit(onClickAddPortrait)}>
                 <div>
                 </div>
                 <br /> <hr />
@@ -41,6 +41,7 @@ let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset }) => (
     )
 
 AddPortraitComponent.propTypes = {
+    onClickAddPortrait: PropTypes.func.isRequired
 }
 
 // Reset the form after submission

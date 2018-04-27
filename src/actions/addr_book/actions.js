@@ -325,6 +325,49 @@ const addr_book_action = {
         }
     },
 
+    setStatus: (mainStatus, actionStatus) => {
+        return dispatch => {
+            if (mainStatus.length > 0) dispatch({ type: mainStatus })
+            if (actionStatus.length > 0) {
+                if (actionStatus == cst.LIST_CONTACTS) {
+                    axios.get("/api/get/contacts")
+                        .then(response => {
+                            console.log("/api/get/contacts, data: " + JSON.stringify(response, null, 5))
+                            // dispatch({
+                            //     type: cst.LIST_CONTACTS_SUCCESS,
+                            //     payload: response.data
+                            // })
+                        })
+                        .catch(err => { alert(err) })
+                }
+                else if (actionStatus == cst.LIST_GROUPS) {
+                    axios.get("/api/get/groups")
+                        .then(response => {
+                            console.log("/api/get/groups, data: " + JSON.stringify(response, null, 5))
+                            // dispatch({
+                            //     type: cst.LIST_GROUPS_SUCCESS,
+                            //     payload: response.data
+                            // })
+                        })
+                        .catch(err => { alert(err) })
+                }
+                // else if (actionStatus == cst.ADD_EMP) {
+                //     axios.get("/api/get/departments")
+                //         .then(response => {
+                //             //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                //             console.log("Get Dpts 4 Add: " + JSON.stringify(response, null, 5))
+                //             dispatch({
+                //                 type: cst.DISPLAY_DPT_SUCCESS,
+                //                 payload: response.data
+                //             })
+                //             dispatch({ type: actionStatus })
+                //         })
+                //         .catch(err => { alert(err) })
+                // }
+                // else dispatch({ type: actionStatus })
+            }
+        }
+    }
 }
 
 export default addr_book_action
