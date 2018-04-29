@@ -12,9 +12,37 @@ const data_addresses = require('../data/data_addresses')
 const data_contacts = require('../data/data_contacts')
 
 const initDataController = (callback) => {
-    Contacts.insertMany(data_contacts, (err, db) => {
+    Contacts.find(data_contacts[0], (err, response) => {
         if (err) throw next(err)
-        res.status(200).json({ msg: "Insertion: Success!" })
+        // already initiated: do nothing, start the server
+        if (response.length > 0) callback()
+        else {
+            Contacts.insertMany(data_contacts, (err, response) => {
+                if (err) throw next(err)
+                let ind = 0
+                const listContact = (list) => {
+                    if (list.length) {
+                        let aE = list.shift()
+                        let adr = data_addresses[ind]
+                        Addresses.create({
+                            type: adr.type,
+                            street: adr.street,
+                            city: adr.city,
+                            state: adr.state,
+                            zip_code: adr.zip_code,
+                            contactsId: aE._id
+                        }, (err, response) => {
+                            if (err) throw next(err)
+                            ind++;
+                            listContact(list)
+                        })
+                    }
+                    else
+                        callback()
+                }
+                listContact([...response])
+            })
+        }
     })
 }
 
