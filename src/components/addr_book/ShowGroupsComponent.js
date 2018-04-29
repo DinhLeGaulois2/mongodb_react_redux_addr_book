@@ -7,11 +7,16 @@ import Modal from '../../common/modal/modal'
 
 import cst from '../../constants/addr_book/cst'
 
-const ShowGroupsComponent = ({ data, onClickDelete }) => (
+const ShowGroupsComponent = ({ }) => (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
-            {data.map((d, index) =>
-                <tr key={index}>                    
+            {HHHHHHHHHHHHH.map((HHHH, index) =>
+                <tr key={index}>
+                    <ShowGroupsItem
+                        key={HHHH.id}
+                        {...HHHH}
+                        HHHH={onClickDelete}
+                    />
                 </tr>
             )}
         </tbody></table>
@@ -19,8 +24,12 @@ const ShowGroupsComponent = ({ data, onClickDelete }) => (
 )
 
 ShowGroupsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({})),
+    data: PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.string,
+        name: PropTypes.string,
+        contactsId: PropTypes.string
+    })),
     onClickDelete: PropTypes.func.isRequired
 }
 
-export default ShowGroupsComponent
+export default ShowGroups

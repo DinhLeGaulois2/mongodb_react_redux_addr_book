@@ -127,6 +127,7 @@ const cst = {
 
     MENU_ADD: "MENU_ADD",
     MENU_DISPLAY: "MENU_DISPLAY",
+    MENU_NEUTRAL: "MENU_NEUTRAL",
 }
 
 export default cst

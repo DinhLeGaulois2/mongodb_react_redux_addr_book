@@ -4,14 +4,14 @@ const initialStates = {
     data: [],
     selectedContact: {},    
     status: cst.LIST_THUMBNAILS,
-    menuStatus: cst.MENU_DISPLAY
+    menuStatus: cst.MENU_NEUTRAL
 }
 
 const a_book = (state = initialStates, action) => {
     switch (action.type) {
         case cst.ADD_CONTACT: {
             return Object.assign({}, state, {
-                status: action.type
+                status: action.type,
             })
         }
 
@@ -214,6 +214,111 @@ const a_book = (state = initialStates, action) => {
                 data: action.payload
             })
         }
+        case cst.DELETE_CONTACT: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_CONTACT_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_GROUP: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_GROUP_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_ADDR: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_ADDR_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_PHONE: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_PHONE_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_EMAIL: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_EMAIL_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_PORTRAIT: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_PORTRAIT_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_THUMBNAIL: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_THUMBNAIL_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_TWITTER: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_TWITTER_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_CONTACT_GROUP: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.DELETE_CONTACT_GROUP_SUCCESS: {
+             return Object.assign({}, state, {
+                  status: action.type
+             })
+        }
+        case cst.MENU_ADD: {
+             return Object.assign({}, state, {
+                  menuStatus: action.type
+             })
+        }
+        case cst.MENU_DISPLAY: {
+             return Object.assign({}, state, {
+                  menuStatus: action.type
+             })
+        }
+        case cst.MENU_NEUTRAL: {
+             return Object.assign({}, state, {
+                  menuStatus: action.type
+             })
+        }
 
         case cst.MENU_ADD: {
             return Object.assign({}, state, {
@@ -226,6 +331,7 @@ const a_book = (state = initialStates, action) => {
                 menuStatus: action.type
             })
         }
+        
     }
     return state;
 }

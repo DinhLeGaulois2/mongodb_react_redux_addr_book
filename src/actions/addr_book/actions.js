@@ -5,7 +5,7 @@ import cst from '../../constants/addr_book/cst'
 const addr_book_action = {
     addAddress: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/address", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_ADDR_SUCCESS,
@@ -18,7 +18,7 @@ const addr_book_action = {
 
     addContact: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/contact", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_CONTACT_SUCCESS,
@@ -31,7 +31,7 @@ const addr_book_action = {
 
     addEmail: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/email", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_EMAIL_SUCCESS,
@@ -44,7 +44,7 @@ const addr_book_action = {
 
     addGroup: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/group", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_GROUP_SUCCESS,
@@ -57,7 +57,7 @@ const addr_book_action = {
 
     addPhone: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/phone", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_PHONE_SUCCESS,
@@ -70,7 +70,7 @@ const addr_book_action = {
 
     addPortrait: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/portrait", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_THUMBNAIL_SUCCESS,
@@ -83,7 +83,7 @@ const addr_book_action = {
 
     addThumbnail: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/thumbnail", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_THUMBNAIL_SUCCESS,
@@ -96,7 +96,7 @@ const addr_book_action = {
 
     addTwitter: (data) => {
         return dispatch => {
-            axios.post("", data)
+            axios.post("/api/add/twitter", data)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_TWITTER_SUCCESS,
@@ -109,7 +109,7 @@ const addr_book_action = {
 
     showContacts: (data) => {
         return dispatch => {
-            axios.get("", data)
+            axios.get("/api/get/contacts", data)
                 .then(response => {
                     dispatch({
                         type: cst.LIST_CONTACTS,
@@ -122,7 +122,7 @@ const addr_book_action = {
 
     showGroups: (data) => {
         return dispatch => {
-            axios.get("", data)
+            axios.get("/api/get/groups", data)
                 .then(response => {
                     dispatch({
                         type: cst.LIST_GROUPS_SUCCESS,
@@ -132,20 +132,20 @@ const addr_book_action = {
                 .catch(err => { alert(err) })
         }
     },
-    
+
     showPhoneByContact: (id) => {
         return dispatch => {
             axios.get("/api/get/phone/contact/", id)
                 .then(response => {
                     dispatch({
-                        type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
+                        type: cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS,
                         payload: response.data
                     })
                 })
                 .catch(err => { alert(err) })
         }
     },
-    
+
     showEmailByContact: (id) => {
         return dispatch => {
             axios.get("/api/get/email/contact/", id)
@@ -158,7 +158,7 @@ const addr_book_action = {
                 .catch(err => { alert(err) })
         }
     },
-    
+
     showGroupByContact: (id) => {
         return dispatch => {
             axios.get("/api/get/group/contact/", id)
@@ -171,7 +171,7 @@ const addr_book_action = {
                 .catch(err => { alert(err) })
         }
     },
-    
+
     showTwitterByContact: (id) => {
         return dispatch => {
             axios.get("/api/get/twitter/contact/", id)
@@ -184,10 +184,10 @@ const addr_book_action = {
                 .catch(err => { alert(err) })
         }
     },
-    
+
     showThumbnailByContact: (id) => {
         return dispatch => {
-            axios.get("/api/get/phone/contact/", id)
+            axios.get("/api/get/thumbnail/contact/", id)
                 .then(response => {
                     dispatch({
                         type: cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS,
@@ -197,7 +197,7 @@ const addr_book_action = {
                 .catch(err => { alert(err) })
         }
     },
-    
+
     showPortraitByContact: (id) => {
         return dispatch => {
             axios.get("/api/get/portrait/contact/", id)
@@ -213,7 +213,7 @@ const addr_book_action = {
 
     deleteAddress: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/address/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_ADDR_SUCCESS,
@@ -225,7 +225,7 @@ const addr_book_action = {
 
     deleteContact: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/contact/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_CONTACT_SUCCESS,
@@ -237,7 +237,7 @@ const addr_book_action = {
 
     deleteEmail: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/email/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_EMAIL_SUCCESS,
@@ -249,7 +249,7 @@ const addr_book_action = {
 
     deleteGroup: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/group/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_GROUP_SUCCESS,
@@ -261,7 +261,7 @@ const addr_book_action = {
 
     deletePhone: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/phone/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_PHONE_SUCCESS,
@@ -273,7 +273,7 @@ const addr_book_action = {
 
     deletePortrait: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/portrait/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_PORTRAIT_SUCCESS,
@@ -285,7 +285,7 @@ const addr_book_action = {
 
     deleteThumbnail: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/thumbnail/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_THUMBNAIL_SUCCESS,
@@ -297,7 +297,7 @@ const addr_book_action = {
 
     deleteTwitter: (id) => {
         return dispatch => {
-            axios.delete("", id)
+            axios.delete("/api/delete/twitter/", id)
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_TWITTER_SUCCESS,
@@ -309,7 +309,7 @@ const addr_book_action = {
 
     updateAddress: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/address/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_ADDR_SUCCESS,
@@ -321,7 +321,7 @@ const addr_book_action = {
 
     updateContact: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/contact/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_CONTACT_SUCCESS,
@@ -333,7 +333,7 @@ const addr_book_action = {
 
     updateEmail: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/email/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_EMAIL_SUCCESS,
@@ -345,7 +345,7 @@ const addr_book_action = {
 
     updateGroup: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/group/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_GROUP_SUCCESS,
@@ -357,7 +357,7 @@ const addr_book_action = {
 
     updatePhone: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/phone/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_PHONE_SUCCESS,
@@ -369,7 +369,7 @@ const addr_book_action = {
 
     updatePortrait: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/portrait/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_PORTRAIT_SUCCESS,
@@ -381,7 +381,7 @@ const addr_book_action = {
 
     updateThumbnail: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/thumbnail/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_THUMBNAIL_SUCCESS,
@@ -393,7 +393,7 @@ const addr_book_action = {
 
     updateTwitter: (id) => {
         return dispatch => {
-            axios.put("", id)
+            axios.put("/api/update/twitter/", id)
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_TWITTER_SUCCESS,
@@ -405,45 +405,20 @@ const addr_book_action = {
 
     setStatus: (mainStatus, actionStatus) => {
         return dispatch => {
-            if (mainStatus.length > 0) dispatch({ type: mainStatus })
-            if (actionStatus.length > 0) {
-                if (actionStatus == cst.LIST_CONTACTS) {
-                    axios.get("/api/get/contacts")
-                        .then(response => {
-                            console.log("/api/get/contacts, data: " + JSON.stringify(response, null, 5))
-                            // dispatch({
-                            //     type: cst.LIST_CONTACTS_SUCCESS,
-                            //     payload: response.data
-                            // })
+            if (mainStatus.length > 0) {
+                axios.get("/api/get/contacts")
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_CONTACTS_SUCCESS,
+                            payload: response.data
                         })
-                        .catch(err => { alert(err) })
-                }
-                else if (actionStatus == cst.LIST_GROUPS) {
-                    axios.get("/api/get/groups")
-                        .then(response => {
-                            console.log("/api/get/groups, data: " + JSON.stringify(response, null, 5))
-                            // dispatch({
-                            //     type: cst.LIST_GROUPS_SUCCESS,
-                            //     payload: response.data
-                            // })
-                        })
-                        .catch(err => { alert(err) })
-                }
-                // else if (actionStatus == cst.ADD_EMP) {
-                //     axios.get("/api/get/departments")
-                //         .then(response => {
-                //             //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                //             console.log("Get Dpts 4 Add: " + JSON.stringify(response, null, 5))
-                //             dispatch({
-                //                 type: cst.DISPLAY_DPT_SUCCESS,
-                //                 payload: response.data
-                //             })
-                //             dispatch({ type: actionStatus })
-                //         })
-                //         .catch(err => { alert(err) })
-                // }
-                // else dispatch({ type: actionStatus })
+                        dispatch({ type: mainStatus })
+                    })
+                    .catch(err => { alert(err) })
             }
+
+            if (actionStatus.length > 0) 
+                dispatch({ type: actionStatus })
         }
     }
 }

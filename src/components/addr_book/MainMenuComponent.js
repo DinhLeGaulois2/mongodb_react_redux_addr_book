@@ -22,7 +22,7 @@ const MainMenuComponent = ({ menuStatus, changeStatus }) =>
                     <button type="button" className="btn" onClick={e => {
                         e.preventDefault()
                         changeStatus(cst.MENU_DISPLAY, "")
-                    }}>Show</button>
+                    }}>Display Contacts</button>
                 }
             </td>
         </tr></tbody></table>
