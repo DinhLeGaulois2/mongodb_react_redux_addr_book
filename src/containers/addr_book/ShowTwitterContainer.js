@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import actions from '../../actions/addr_book/actions'
-import ShowContactsComponent from '../../components/addr_book/ShowContactsComponent'
+import ShowTwitterComponent from '../../components/addr_book/ShowTwitterComponent'
 
 const mapStateToProps = (state) => ({
     data: state.addrbook.data,
@@ -10,13 +10,13 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickDelete: (id) => { dispatch(actions.deleteContact(id))}
+    onClickDelete: (id) => { dispatch(actions.deleteTwitter(id))}
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself
-const ShowContactsContainer = connect(
+const ShowTwitterContainer = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ShowContactsComponent)
+)(ShowTwitterComponent)
 
-export default ShowContactsContainer
+export default ShowTwitterContainer

@@ -5,11 +5,12 @@ import actions from '../../actions/addr_book/actions'
 import ShowGroupsComponent from '../../components/addr_book/ShowGroupsComponent'
 
 const mapStateToProps = (state) => ({
-    data: state.addrbook.data
+    data: state.addrbook.data,
+    contact: state.addrbook.selectedContact
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    onClickDelete: (bId) => { dispatch(actions.deleteGroup(bId))}
+    onClickDelete: (id) => { dispatch(actions.deleteGroup(id))}
 })
 
 // You have to connect() to any reducers that you wish to connect to yourself

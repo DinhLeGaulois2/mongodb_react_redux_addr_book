@@ -14,21 +14,38 @@ const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
         <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
             <button type="button" className="btn" onClick={e => {
                 e.preventDefault()
-                onClickChangeStatus("", cst.LIST_CONTACTS)
-            }}>Show Contacts</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                onClickChangeStatus("", cst.LIST_ADDRESSES)
+            }}>Addresses</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn" onClick={e => {
+                e.preventDefault()
+                onClickChangeStatus("", cst.LIST_PHONES)
+            }}>Phones</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn" onClick={e => {
+                e.preventDefault()
+                onClickChangeStatus("", cst.LIST_EMAILS)
+            }}>Emails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn" onClick={e => {
+                e.preventDefault()
+                onClickChangeStatus("", cst.LIST_PORTRAITS)
+            }}>Portraits</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn" onClick={e => {
+                e.preventDefault()
+                onClickChangeStatus("", cst.LIST_THUMBNAILS)
+            }}>Thumbnails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn" onClick={e => {
+                e.preventDefault()
+                onClickChangeStatus("", cst.LIST_TWITTER)
+            }}>Twitter</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" className="btn" onClick={e => {
                 e.preventDefault()
                 onClickChangeStatus("", cst.LIST_GROUPS)
-            }}>Show Groups</button>
+            }}>Group</button>
             <br />
         </td></tr></tbody></table>
         {menuStatus == cst.MENU_DISPLAY &&
             <div>
                 {status === cst.LIST_CONTACTS_SUCCESS &&
                     <ShowContactsContainer />
-                }
-                {status === cst.LIST_GROUPS_SUCCESS &&
-                    <ShowGroupsContainer />
                 }
             </div>
         }

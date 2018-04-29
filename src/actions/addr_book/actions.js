@@ -132,6 +132,84 @@ const addr_book_action = {
                 .catch(err => { alert(err) })
         }
     },
+    
+    showPhoneByContact: (id) => {
+        return dispatch => {
+            axios.get("/api/get/phone/contact/", id)
+                .then(response => {
+                    dispatch({
+                        type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
+                        payload: response.data
+                    })
+                })
+                .catch(err => { alert(err) })
+        }
+    },
+    
+    showEmailByContact: (id) => {
+        return dispatch => {
+            axios.get("/api/get/email/contact/", id)
+                .then(response => {
+                    dispatch({
+                        type: cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS,
+                        payload: response.data
+                    })
+                })
+                .catch(err => { alert(err) })
+        }
+    },
+    
+    showGroupByContact: (id) => {
+        return dispatch => {
+            axios.get("/api/get/group/contact/", id)
+                .then(response => {
+                    dispatch({
+                        type: cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS,
+                        payload: response.data
+                    })
+                })
+                .catch(err => { alert(err) })
+        }
+    },
+    
+    showTwitterByContact: (id) => {
+        return dispatch => {
+            axios.get("/api/get/twitter/contact/", id)
+                .then(response => {
+                    dispatch({
+                        type: cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS,
+                        payload: response.data
+                    })
+                })
+                .catch(err => { alert(err) })
+        }
+    },
+    
+    showThumbnailByContact: (id) => {
+        return dispatch => {
+            axios.get("/api/get/phone/contact/", id)
+                .then(response => {
+                    dispatch({
+                        type: cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS,
+                        payload: response.data
+                    })
+                })
+                .catch(err => { alert(err) })
+        }
+    },
+    
+    showPortraitByContact: (id) => {
+        return dispatch => {
+            axios.get("/api/get/portrait/contact/", id)
+                .then(response => {
+                    dispatch({
+                        type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
+                        payload: response.data
+                    })
+                })
+                .catch(err => { alert(err) })
+        }
+    },
 
     deleteAddress: (id) => {
         return dispatch => {

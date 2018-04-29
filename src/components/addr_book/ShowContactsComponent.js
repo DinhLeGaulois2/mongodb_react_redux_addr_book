@@ -19,7 +19,12 @@ const ShowContactsComponent = ({ data, onClickDelete }) => (
 )
 
 ShowContactsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({})),
+    data: PropTypes.arrayOf(PropTypes.shape({
+        _id: PropTypes.number,
+        name: PropTypes.string,
+        company: PropTypes.string,
+        title: PropTypes.string
+    })),
     onClickDelete: PropTypes.func.isRequired
 }
 

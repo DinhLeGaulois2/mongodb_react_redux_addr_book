@@ -2,6 +2,7 @@ import cst from '../../constants/addr_book/cst'
 
 const initialStates = {
     data: [],
+    selectedContact: {},    
     status: cst.LIST_THUMBNAILS,
     menuStatus: cst.MENU_DISPLAY
 }
@@ -10,13 +11,14 @@ const a_book = (state = initialStates, action) => {
     switch (action.type) {
         case cst.ADD_CONTACT: {
             return Object.assign({}, state, {
-                status: action.type,
+                status: action.type
             })
         }
 
         case cst.ADD_CONTACT_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
+                selectedContact: action.payload
             })
         }
 
@@ -104,18 +106,6 @@ const a_book = (state = initialStates, action) => {
             })
         }
 
-        case cst.ADD_CONTACT_GROUP: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.ADD_CONTACT_GROUP_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
         case cst.LIST_CONTACTS: {
             return Object.assign({}, state, {
                 status: action.type,
@@ -125,101 +115,105 @@ const a_book = (state = initialStates, action) => {
         case cst.LIST_CONTACTS_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
-                data: action.payload
+                data: action.payload,
+                // NO selected contact at this point
+                selectedContact: {}
             })
         }
 
-        case cst.LIST_ADDRESSES: {
+        case cst.LIST_EMAIL_BY_CONTACT_ID: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
 
-        case cst.LIST_ADDRESSES_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
-            })
-        }
-
-        case cst.LIST_PHONES: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.LIST_PHONES_SUCCESS: {
+        case cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
                 data: action.payload
             })
         }
 
-        case cst.LIST_EMAILS: {
+        case cst.LIST_PHONE_BY_CONTACT_ID: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
 
-        case cst.LIST_EMAILS_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
-            })
-        }
-
-        case cst.LIST_GROUPS: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.LIST_GROUPS_SUCCESS: {
+        case cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
                 data: action.payload
             })
         }
 
-        case cst.LIST_TWITTER: {
+        case cst.LIST_ADDR_BY_CONTACT_ID: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
 
-        case cst.LIST_TWITTER_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
-            })
-        }
-
-        case cst.LIST_THUMBNAILS: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.LIST_THUMBNAILS_SUCCESS: {
+        case cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
                 data: action.payload
             })
         }
 
-        case cst.LIST_PORTRAITS: {
+        case cst.LIST_GROUP_BY_CONTACT_ID: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
 
-        case cst.LIST_PORTRAITS_SUCCESS: {
+        case cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
                 data: action.payload
             })
         }
 
+
+        case cst.LIST_TWITTER_BY_CONTACT_ID: {
+            return Object.assign({}, state, {
+                status: action.type,
+            })
+        }
+
+        case cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS: {
+            return Object.assign({}, state, {
+                status: action.type,
+                data: action.payload
+            })
+        }
+
+
+        case cst.LIST_THUMBNAIL_BY_CONTACT_ID: {
+            return Object.assign({}, state, {
+                status: action.type,
+            })
+        }
+
+        case cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS: {
+            return Object.assign({}, state, {
+                status: action.type,
+                data: action.payload
+            })
+        }
+
+
+        case cst.LIST_PORTRAIT_BY_CONTACT_ID: {
+            return Object.assign({}, state, {
+                status: action.type,
+            })
+        }
+
+        case cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS: {
+            return Object.assign({}, state, {
+                status: action.type,
+                data: action.payload
+            })
+        }
 
         case cst.MENU_ADD: {
             return Object.assign({}, state, {
