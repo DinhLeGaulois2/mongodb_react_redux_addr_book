@@ -3,6 +3,8 @@ import axios from "axios"
 import cst from '../../constants/addr_book/cst'
 
 const addr_book_action = {
+    aContact: "",
+
     addAddress: (data) => {
         return dispatch => {
             axios.post("/api/add/address", data)
@@ -109,6 +111,7 @@ const addr_book_action = {
 
     selectAContact: (id) => {
         return dispatch => {
+            addr_book_action.aContact = id
             dispatch({
                 type: cst.SELECT_A_CONTACT_SUCCESS,
                 payload: id
@@ -117,19 +120,13 @@ const addr_book_action = {
     },
 
     showContacts: () => {
-        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-        console.log("showContacts, sdfsffd ")
         return dispatch => {
-            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-            console.log("showContacts, data: 45654")// + JSON.stringify(response, null, 5))
             axios.get("/api/get/contacts")
                 .then(response => {
-                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                    console.log("showContacts, data: ")// + JSON.stringify(response, null, 5))
-                    // dispatch({
-                    //     type: cst.LIST_CONTACTS_SUCCESS,
-                    //     payload: response.data
-                    // })
+                    dispatch({
+                        type: cst.LIST_CONTACTS_SUCCESS,
+                        payload: response.data
+                    })
                 })
                 .catch(err => alert(err))
         }
@@ -148,94 +145,114 @@ const addr_book_action = {
         }
     },
 
-    showAddrByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/addresse/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showAddrByContact: () => {
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("/api/get/addresse/contact/, start with ifaasfafasd: " + addr_book_action.aContact)
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                console.log("/api/get/addresse/contact/, start with id: " + addr_book_action.aContact)
+                axios.get("/api/get/addresse/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                        console.log("/api/get/addresse/contact/, get data: " + JSON.stringify(response, null, 5))
+                        dispatch({
+                            type: cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
-    showPhoneByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/phone/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showPhoneByContact: () => {
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                axios.get("/api/get/phone/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
-    showEmailByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/email/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showEmailByContact: () => {
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                axios.get("/api/get/email/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
-    showGroupByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/group/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showGroupByContact: () => {
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                axios.get("/api/get/group/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
-    showTwitterByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/twitter/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showTwitterByContact: () => {
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                axios.get("/api/get/twitter/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
-    showThumbnailByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/thumbnail/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showThumbnailByContact: () => {
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                axios.get("/api/get/thumbnail/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
-    showPortraitByContact: (id) => {
-        return dispatch => {
-            axios.get("/api/get/portrait/contact/" + id)
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
-                        payload: response.data
+    showPortraitByContact: () => {
+        if (addr_book_action.aContact.length > 0) {
+            return dispatch => {
+                axios.get("/api/get/portrait/contact/" + addr_book_action.aContact)
+                    .then(response => {
+                        dispatch({
+                            type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
+                            payload: response.data
+                        })
                     })
-                })
-                .catch(err => { alert(err) })
+                    .catch(err => { alert(err) })
+            }
         }
     },
 
@@ -254,12 +271,8 @@ const addr_book_action = {
 
     deleteContact: (id) => {
         return dispatch => {
-            //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-            console.log("Delete Contact, id: " + id)
             axios.delete("/api/delete/contact/" + id)
                 .then(response => {
-                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                    console.log("Delete Contact: Success!")
                     dispatch({
                         type: cst.DELETE_CONTACT_SUCCESS,
                         payload: id
@@ -444,34 +457,23 @@ const addr_book_action = {
     },
 
     setStatus: (mainStatus, actionStatus) => {
-        return (dispatch, getState) => {
-            axios.get("/api/get/contacts")
-                .then(response => {
-                    dispatch({
-                        type: cst.LIST_CONTACTS_SUCCESS,
-                        payload: response.data
+        return dispatch => {
+            if (mainStatus.length) {
+                addr_book_action.aContact = {}
+                axios.get("/api/get/contacts")
+                    .then(response => {
+                        dispatch({ type: mainStatus })
+                        dispatch({
+                            type: cst.LIST_CONTACTS_SUCCESS,
+                            payload: response.data
+                        })
                     })
+                    .catch(err => { alert(err) })
+            }
 
-
-                    if (actionStatus.length > 0) {
-                        dispatch({ type: cst.SELECT_CONTACT_NULL })
-                        if (actionStatus != cst.LIST_CONTACTS) {
-                            let st = getState().addrbook.selectedContact
-                            if (st.menuStatus == cst.MENU_DISPLAY)
-                                switch (actionStatus) {
-                                    case cst.LIST_ADDRESSES: return addr_book_action.showAddrByContact(st._id)
-                                    case cst.LIST_EMAIL_BY_CONTACT_ID: return addr_book_action.showEmailByContact(st._id)
-                                    case cst.LIST_GROUP_BY_CONTACT_ID: return addr_book_action.showGroupByContact(st._id)
-                                    case cst.LIST_PHONE_BY_CONTACT_ID: return addr_book_action.showPhoneByContact(st._id)
-                                    case cst.LIST_PORTRAIT_BY_CONTACT_ID: return addr_book_action.showPortraitByContact(st._id)
-                                    case cst.LIST_THUMBNAIL_BY_CONTACT_ID: return addr_book_action.showThumbnailByContact(st._id)
-                                    case cst.LIST_TWITTER_BY_CONTACT_ID: return addr_book_action.showTwitterByContact(st._id)
-                                }
-                        }
-                    }
-                    if (mainStatus.length > 0) dispatch({ type: mainStatus })
-                })
-                .catch(err => { alert(err) })
+            if (actionStatus.length) {// no change on Main page ...
+                dispatch({ type: actionStatus })
+            }
         }
     }
 }

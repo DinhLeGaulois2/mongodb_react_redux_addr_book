@@ -6,7 +6,8 @@ import ShowContactsComponent from '../../components/addr_book/ShowContactsCompon
 
 const mapStateToProps = (state) => ({
     data: state.addrbook.data,
-    status: state.addrbook.status
+    status: state.addrbook.status,
+    selectedContact: state.addrbook.selectedContact
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -15,6 +16,7 @@ const mapDispatchToProps = (dispatch) => ({
     onClickSelectAContact: (id) => { dispatch(actions.selectAContact(id))},
     onClick_showContacts: () => {dispatch(actions.showContacts())},
     onClick_showGroups: () => {dispatch(actions.showGroups())},
+    onClick_showAddrByContact: () => {dispatch(actions.showAddrByContact())},
     onClick_showPhoneByContact: () => {dispatch(actions.showPhoneByContact())},
     onClick_showEmailByContact: () => {dispatch(actions.showEmailByContact())},
     onClick_showGroupByContact: () => {dispatch(actions.showGroupByContact())},

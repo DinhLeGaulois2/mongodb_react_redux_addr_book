@@ -12,30 +12,16 @@ const MainMenuComponent = ({ menuStatus, changeStatus }) =>
     <div>
         <table style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr>
             <td align="center" style={{ 'padding': '10px' }}>
-                {menuStatus == cst.MENU_DISPLAY &&
+                <p align="center">
                     <button type="button" className="btn" onClick={e => {
                         e.preventDefault()
                         changeStatus(cst.MENU_ADD, "")
-                    }}>Add</button>
-                }
-                {menuStatus == cst.MENU_ADD &&
+                    }}>Add</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                         e.preventDefault()
                         changeStatus(cst.MENU_DISPLAY, "")
                     }}>Display Contacts</button>
-                }
-                {menuStatus == cst.MENU_NEUTRAL &&
-                    <p align="center">
-                        <button type="button" className="btn" onClick={e => {
-                            e.preventDefault()
-                            changeStatus(cst.MENU_ADD, "")
-                        }}>Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
-                        <button type="button" className="btn" onClick={e => {
-                            e.preventDefault()
-                            changeStatus(cst.MENU_DISPLAY, cst.LIST_CONTACTS)
-                        }}>Display Contacts</button>
-                    </p>
-                }
+                </p>
             </td>
         </tr></tbody></table>
         <br />

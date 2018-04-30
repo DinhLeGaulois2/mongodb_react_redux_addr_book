@@ -313,7 +313,7 @@ const a_book = (state = initialStates, action) => {
         }
         case cst.SELECT_CONTACT_NULL: {            
             return Object.assign({}, state, {
-                selectedContact: []
+                selectedContact: {}
             })
         }
 

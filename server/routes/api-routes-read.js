@@ -13,8 +13,6 @@ module.exports = function (app) {
     app.get("/api/get/contacts", (req, res, next) => {
         Contacts.find()
             .then(data => {
-                //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                // console.log("app.get('/api/get/contacts': " + JSON.stringify(data, null, 5))
                 res.status(200).json(data)
             })
             .catch(next)
@@ -39,8 +37,15 @@ module.exports = function (app) {
     })
 
     app.get("/api/get/addresse/contact/:id", (req, res, next) => {
-        Addresses.find({ "contactId": objectId(req.params.id) })
-            .then(data => res.status(200).json(data))
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("/api/get/addresse/contact/, start, id: " + req.params.id)
+        Addresses.find()
+            .then(data => {
+
+                //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                console.log("/api/get/addresse/contact/, from database: " + JSON.stringify(data, null, 5))
+                res.status(200).json(data)
+            })
             .catch(next)
     })
 

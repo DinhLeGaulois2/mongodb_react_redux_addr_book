@@ -17,48 +17,50 @@ import ShowThumbnailsContainer from '../../containers/addr_book/ShowThumbnailsCo
 import ShowTwitterContainer from '../../containers/addr_book/ShowTwitterContainer'
 
 
-const ShowContactsComponent = ({ data, status, onClickDelete, onClickChangeStatus,
-    onClickSelectAContact, onClick_showGroups, onClick_showPhoneByContact,
-    onClick_showEmailByContact, onClick_showGroupByContact, onClick_showTwitterByContact,
-    onClick_showThumbnailByContact, onClick_showPortraitByContact }) => (
+const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, onClickChangeStatus, onClickSelectAContact,
+    onClick_showPhoneByContact, onClick_showEmailByContact, onClick_showGroupByContact, onClick_showTwitterByContact,
+    onClick_showThumbnailByContact, onClick_showPortraitByContact, onClick_showAddrByContact }) => (
         <div>
-            {status == cst.SELECT_A_CONTACT &&
-                <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
+            {status == cst.SELECT_A_CONTACT_SUCCESS &&
+                <div>
+                    <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
+                        <button type="button" className="btn" onClick={e => {
+                            e.preventDefault()
+                            onClick_showAddrByContact()
+                        }}>Addresses</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_ADDR_BY_CONTACT_ID)
-                    }}>Addresses</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            e.preventDefault()
+                            onClick_showPhoneByContact()
+                        }}>Phones</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_PHONE_BY_CONTACT_ID)
-                    }}>Phones</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            e.preventDefault()
+                            onClick_showEmailByContact()
+                        }}>Emails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_EMAIL_BY_CONTACT_ID)
-                    }}>Emails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            e.preventDefault()
+                            onClick_showPortraitByContact()
+                        }}>Portraits</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_PORTRAIT_BY_CONTACT_ID)
-                    }}>Portraits</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            e.preventDefault()
+                            onClick_showThumbnailByContact()
+                        }}>Thumbnails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_THUMBNAIL_BY_CONTACT_ID)
-                    }}>Thumbnails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            e.preventDefault()
+                            onClick_showTwitterByContact()
+                        }}>Twitter</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_TWITTER_BY_CONTACT_ID)
-                    }}>Twitter</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <button type="button" className="btn" onClick={e => {
-                        e.preventDefault()
-                        onClickChangeStatus("", cst.LIST_GROUP_BY_CONTACT_ID)
-                    }}>Groups</button>
-                    <br />
-                </td></tr></tbody></table>
+                            e.preventDefault()
+                            onClick_showGroupByContact()
+                        }}>Groups</button>
+                        <br />
+                    </td></tr></tbody></table>
+                    <h3 align="center">[Action for: "{selectedContact[0].name}" (Title: {selectedContact[0].title}, Company: {selectedContact[0].company})]</h3>
+                </div>
             }
             {status == cst.LIST_CONTACTS_SUCCESS &&
                 <table align="center" style={{ 'width': '80%' }}><tbody>
                     {data.map((aUnit, index) =>
-                        <tr key={index}><td>
+                        <tr key={index}><td style={{ 'padding': '10px', 'backgroundColor': 'gray' }}>
                             <div className="relative">
                                 <h3 align="center" className="centeredChapterTitle"><b>Contact</b></h3>
                                 <button type="button" className="btnDelete" onClick={e => {
@@ -66,15 +68,18 @@ const ShowContactsComponent = ({ data, status, onClickDelete, onClickChangeStatu
                                     onClickDelete(aUnit._id)
                                 }}>X</button>
                             </div>
-                            <b>Name:</b> {aUnit.name}<br />
-                            <b>Company:</b> {aUnit.company}<br />
-                            <b>Title:</b> {aUnit.title}
+                            <div style={{ 'padding': '10px', 'backgroundColor': 'black', 'color': 'white', 'borderRadius': '10px' }}>
+                                <b>Name:</b> {aUnit.name}<br />
+                                <b>Company:</b> {aUnit.company}<br />
+                                <b>Title:</b> {aUnit.title}
+                            </div>
                             <p align="center">
                                 <button type="button" className="btn" onClick={e => {
                                     e.preventDefault()
                                     onClickSelectAContact(aUnit._id)
                                 }}>Select</button>
                             </p>
+                            <hr />
                         </td></tr>
                     )}
                 </tbody></table>
@@ -103,25 +108,27 @@ const ShowContactsComponent = ({ data, status, onClickDelete, onClickChangeStatu
         </div>
     )
 
+const selectAContactShape = {
+    _id: PropTypes.string,
+    name: PropTypes.string,
+    company: PropTypes.string,
+    title: PropTypes.string
+}
+
 ShowContactsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string,
-        name: PropTypes.string,
-        company: PropTypes.string,
-        title: PropTypes.string
-    })),
+    data: PropTypes.arrayOf(PropTypes.shape(selectAContactShape)),
+    selectedContact: PropTypes.arrayOf(PropTypes.shape(selectAContactShape)),
     status: PropTypes.string,
     onClickDelete: PropTypes.func.isRequired,
     onClickChangeStatus: PropTypes.func.isRequired,
     onClickSelectAContact: PropTypes.func.isRequired,
-    onClick_showContacts: PropTypes.func.isRequired,
-    onClick_showGroups: PropTypes.func.isRequired,
     onClick_showPhoneByContact: PropTypes.func.isRequired,
     onClick_showEmailByContact: PropTypes.func.isRequired,
     onClick_showGroupByContact: PropTypes.func.isRequired,
     onClick_showTwitterByContact: PropTypes.func.isRequired,
     onClick_showThumbnailByContact: PropTypes.func.isRequired,
     onClick_showPortraitByContact: PropTypes.func.isRequired,
+    onClick_showAddrByContact: PropTypes.func.isRequired,
 }
 
 export default ShowContactsComponent
