@@ -73,6 +73,7 @@ const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, o
                                 <b>Company:</b> {aUnit.company}<br />
                                 <b>Title:</b> {aUnit.title}
                             </div>
+                            <br/>
                             <p align="center">
                                 <button type="button" className="btn" onClick={e => {
                                     e.preventDefault()

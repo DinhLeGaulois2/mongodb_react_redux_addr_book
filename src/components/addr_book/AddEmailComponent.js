@@ -7,8 +7,11 @@ import { renderInputField, renderTextareaField } from '../../common/reduxForm/re
 const validate = values => {
     const errors = {}
 
-    if (!values.PPPPPP) {
-        errors.PPPPPP = "Required"
+    if (!values.type) {
+        errors.type = "Required"
+    }
+    if (!values.email) {
+        errors.email = "Required"
     }
     return errors
 }
@@ -31,6 +34,13 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddE
             <br />
             <form onSubmit={handleSubmit(onClickAddEmail)}>
                 <div>
+                <Field name="type" component='select'>
+                    <option></option>
+                    <option value="pro">Personal</option>
+                    <option value="perso">Profesionnal</option>
+                </Field>
+                <br />
+                <Field name="email" component={renderInputField} placeholder="Email" /><br />
                 </div>
                 <br /> <hr />
                 <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
