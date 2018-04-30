@@ -62,14 +62,13 @@ const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, o
                     {data.map((aUnit, index) =>
                         <tr key={index}><td style={{ 'padding': '10px', 'backgroundColor': 'gray' }}>
                             <div className="relative">
-                                <h3 align="center" className="centeredChapterTitle"><b>Contact</b></h3>
+                                <h3 align="center" className="centeredChapterTitle"><b>{aUnit.name}</b></h3>
                                 <button type="button" className="btnDelete" onClick={e => {
                                     e.preventDefault()
                                     onClickDelete(aUnit._id)
                                 }}>X</button>
                             </div>
                             <div style={{ 'padding': '10px', 'backgroundColor': 'black', 'color': 'white', 'borderRadius': '10px' }}>
-                                <b>Name:</b> {aUnit.name}<br />
                                 <b>Company:</b> {aUnit.company}<br />
                                 <b>Title:</b> {aUnit.title}
                             </div>
