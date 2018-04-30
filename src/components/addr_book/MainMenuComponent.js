@@ -6,7 +6,7 @@ import cst from '../../constants/addr_book/cst'
 import '../../style.scss'
 
 import AddUIContainer from '../../containers/addr_book/AddUIContainer'
-import DisplayUIContainer from '../../containers/addr_book/DisplayUIContainer'
+import ShowContactsContainer from '../../containers/addr_book/ShowContactsContainer'
 
 const MainMenuComponent = ({ menuStatus, changeStatus }) =>
     <div>
@@ -24,6 +24,18 @@ const MainMenuComponent = ({ menuStatus, changeStatus }) =>
                         changeStatus(cst.MENU_DISPLAY, "")
                     }}>Display Contacts</button>
                 }
+                {menuStatus == cst.MENU_NEUTRAL &&
+                    <p align="center">
+                        <button type="button" className="btn" onClick={e => {
+                            e.preventDefault()
+                            changeStatus(cst.MENU_ADD, "")
+                        }}>Add</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" className="btn" onClick={e => {
+                            e.preventDefault()
+                            changeStatus(cst.MENU_DISPLAY, cst.LIST_CONTACTS)
+                        }}>Display Contacts</button>
+                    </p>
+                }
             </td>
         </tr></tbody></table>
         <br />
@@ -31,7 +43,7 @@ const MainMenuComponent = ({ menuStatus, changeStatus }) =>
             <AddUIContainer />
         }
         {menuStatus == cst.MENU_DISPLAY &&
-            <DisplayUIContainer />
+            <ShowContactsContainer />
         }
     </div>
 

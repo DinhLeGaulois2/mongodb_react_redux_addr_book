@@ -17,41 +17,6 @@ import ShowTwitterContainer from '../../containers/addr_book/ShowTwitterContaine
 
 const DisplayUIComponent = ({ status, menuStatus, onClickChangeStatus }) => (
     <div style={{ 'backgroundColor': 'gray' }}>
-        <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_CONTACTS)
-            }}>Addresses</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_ADDRESSES)
-            }}>Addresses</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_PHONES)
-            }}>Phones</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_EMAILS)
-            }}>Emails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_PORTRAITS)
-            }}>Portraits</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_THUMBNAILS)
-            }}>Thumbnails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_TWITTER)
-            }}>Twitter</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" className="btn" onClick={e => {
-                e.preventDefault()
-                onClickChangeStatus("", cst.LIST_GROUPS)
-            }}>Groups</button>
-            <br />
-        </td></tr></tbody></table>
         {menuStatus == cst.MENU_DISPLAY &&
             <div>
                 {status === cst.LIST_ADDRESSES &&

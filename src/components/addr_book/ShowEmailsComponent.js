@@ -7,17 +7,21 @@ import Modal from '../../common/modal/modal'
 
 import cst from '../../constants/addr_book/cst'
 
-const ShowEmailsComponent = ({ }) => (
+const ShowEmailsComponent = ({ data, onClickDelete }) => (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
-            {HHHHHHHHHHHHH.map((HHHH, index) =>
-                <tr key={index}>
-                    <ShowEmailsItem
-                        key={HHHH.id}
-                        {...HHHH}
-                        HHHH={onClickDelete}
-                    />
-                </tr>
+            {data.map((aUnit, index) =>
+                <tr key={index}><td>
+                    <div className="relative">
+                        <h3 align="center" className="centeredChapterTitle"><b>Twitter</b> (id: {aUnit._id})</h3>
+                        <button type="button" className="btnDelete" onClick={e => {
+                            e.preventDefault()
+                            onClickDelete(aUnit._id)
+                        }}>X</button>
+                    </div>
+                    <b>Type:</b> {aUnit.type}<br />
+                    <b>Email:</b> {aUnit.address}<br />
+                </td></tr>
             )}
         </tbody></table>
     </div>
@@ -33,4 +37,4 @@ ShowEmailsComponent.propTypes = {
     onClickDelete: PropTypes.func.isRequired
 }
 
-export default ShowEmails
+export default ShowEmailsComponent

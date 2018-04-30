@@ -1,3 +1,5 @@
+var objectId = require('mongodb').ObjectId
+
 var Addresses = require('../models/addresses.js');
 var Contacts = require('../models/contacts.js');
 var Emails = require('../models/emails.js');

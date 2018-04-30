@@ -1,15 +1,9 @@
-$bg_main:#8a9a98;
-$btn_menu_bg: #FFFFFF;
-$btn_menu_bg_hover: #a8c0c9;
-$btn_menu_color: blue;
-$widthdivList:50%;
-
 body{
     font-family: 'Times New Roman', Times, serif;
 }
 
 .jobList{
-  width:$widthdivList;
+  width:50%;
   padding:15px;
 }
 
@@ -32,15 +26,15 @@ body{
 }
 
 .menuButton{
-  background-color:$btn_menu_bg;
-  color:$btn_menu_color;
+  background-color:#FFFFFF;
+  color:blue;
   padding:10px;
   border-radius:10px;
   font-size:200%;
 }
 
 .menuButton:hover{
-  background-color:$btn_menu_bg_hover;
+  background-color:#a8c0c9;
 }
 
 .btnSubmit:disabled{
@@ -81,4 +75,18 @@ body{
   font-weight: bold;
   text-align: center;
   margin: 20px 0px
+}
+
+div.relative{  
+  position: relative;
+}
+
+button.btnDelete{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: white;
+  font-weight: bold;
+  color:red;
+  border: 1px solid black;
 }

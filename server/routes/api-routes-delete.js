@@ -1,3 +1,5 @@
+var objectId = require('mongodb').ObjectId
+
 var Addresses = require('../models/addresses.js');
 var Contacts = require('../models/contacts.js');
 var Emails = require('../models/emails.js');
@@ -9,50 +11,58 @@ var Twitter = require('../models/twitter.js');
 
 module.exports = function (app) {
     app.delete("/api/delete/contact/:id", (req, res, next) => {
-        Contacts.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Contacts.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/group/:id", (req, res, next) => {
-        Groups.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Groups.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/address/:id", (req, res, next) => {
-        Addresses.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Addresses.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/phone/:id", (req, res, next) => {
-        Phones.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Phones.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/email/:id", (req, res, next) => {
-        Emails.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Emails.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/portrait/:id", (req, res, next) => {
-        Portraits.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Portraits.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/thumbnail/:id", (req, res, next) => {
-        Thumbnails.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Thumbnails.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
-    
+
     app.delete("/api/delete/twitter/:id", (req, res, next) => {
-        Twitters.delete({ _id: req.params.id })
-        .then(data => res.status(200).json("Delete: Success!"))
-        .catch(next)
+        Twitters.remove({ "_id": objectId(req.params.id) }, (err, db) => {
+            if (err) throw next(err)
+            res.status(200).json("Delete: Success!")
+        })
     })
 }

@@ -1,3 +1,5 @@
+var objectId = require('mongodb').ObjectId
+
 var Addresses = require('../models/addresses.js');
 var Contacts = require('../models/contacts.js');
 var Emails = require('../models/emails.js');
@@ -13,13 +15,13 @@ module.exports = function (app) {
         if (req.body.name != undefined) obj.name = req.body.name
         if (req.body.company != undefined) obj.company = req.body.company
         if (req.body.title != undefined) obj.title = req.body.title
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
 
     app.put("/api/update/group/:id", (req, res, next) => {
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: { name: req.body.name } }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
@@ -31,7 +33,7 @@ module.exports = function (app) {
         if (req.body.city != undefined) obj.city = req.body.city
         if (req.body.state != undefined) obj.state = req.body.state
         if (req.body.zip_code != undefined) obj.zip_code = req.body.zip_code
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
@@ -40,7 +42,7 @@ module.exports = function (app) {
         let obj = {}
         if (req.body.type != undefined) obj.type = req.body.type
         if (req.body.number != undefined) obj.number = req.body.number
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
@@ -49,7 +51,7 @@ module.exports = function (app) {
         let obj = {}
         if (req.body.type != undefined) obj.type = req.body.type
         if (req.body.address != undefined) obj.address = req.body.address
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
@@ -58,7 +60,7 @@ module.exports = function (app) {
         let obj = {}
         if (req.body.mime_type != undefined) obj.mime_type = req.body.mime_type
         if (req.body.data != undefined) obj.data = req.body.data
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
@@ -67,7 +69,7 @@ module.exports = function (app) {
         let obj = {}
         if (req.body.mime_type != undefined) obj.mime_type = req.body.mime_type
         if (req.body.data != undefined) obj.data = req.body.data
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
@@ -78,7 +80,7 @@ module.exports = function (app) {
         if (req.body.location != undefined) obj.location = req.body.location
         if (req.body.web != undefined) obj.web = req.body.web
         if (req.body.bio != undefined) obj.bio = req.body.bio
-        Contacts.updateOne({ _id: req.params.id },
+        Contacts.updateOne({ "_id": objectId(req.params.id) },
             { $set: obj }).then(data => res.status(200).json("Update: Success!"))
             .catch(next)
     })
