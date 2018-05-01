@@ -18,7 +18,7 @@ const validate = values => {
 
 let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddEmail }) => (
     <div className="container">
-        <table align="center"><tr><td>
+        <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
                 'backgroundColor': 'black',
                 'color': 'cyan',
@@ -30,7 +30,7 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddE
                 'textAlign': 'center',
                 'margin': '20px 0px'
             }}>Add Email</div>
-        </td></tr></table>
+        </td></tr></tbody></table>
         <br />
         <form onSubmit={handleSubmit(onClickAddEmail)}>
             <div>

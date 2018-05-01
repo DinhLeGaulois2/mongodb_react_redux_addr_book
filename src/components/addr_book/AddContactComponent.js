@@ -21,7 +21,7 @@ const validate = values => {
 
 let AddContactComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddContact }) => (
     <div className="container">
-        <table align="center"><tr><td>
+        <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
                 'backgroundColor': 'black',
                 'color': 'cyan',
@@ -33,7 +33,7 @@ let AddContactComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
                 'textAlign': 'center',
                 'margin': '20px 0px'
             }}>Add Contact</div>
-        </td></tr></table>
+        </td></tr></tbody></table>
         <br />
         <form onSubmit={handleSubmit(onClickAddContact)}>
             <div>

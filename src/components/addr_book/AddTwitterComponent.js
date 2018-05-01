@@ -24,7 +24,7 @@ const validate = values => {
 
 let AddTwitterComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddTwitter }) => (
     <div className="container">
-        <table align="center"><tr><td>
+        <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
                 'backgroundColor': 'black',
                 'color': 'cyan',
@@ -36,7 +36,7 @@ let AddTwitterComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
                 'textAlign': 'center',
                 'margin': '20px 0px'
             }}>Add Twitter</div>
-        </td></tr></table>
+        </td></tr></tbody></table>
         <br />
         <form onSubmit={handleSubmit(onClickAddTwitter)}>
             <div>

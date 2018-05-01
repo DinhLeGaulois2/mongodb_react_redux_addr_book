@@ -15,7 +15,7 @@ const validate = values => {
 
 let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddGroup }) => (
     <div className="container">
-        <table align="center"><tr><td>
+        <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
                 'backgroundColor': 'black',
                 'color': 'cyan',
@@ -27,7 +27,7 @@ let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddG
                 'textAlign': 'center',
                 'margin': '20px 0px'
             }}>Add Group</div>
-        </td></tr></table>
+        </td></tr></tbody></table>
         <br />
         <form onSubmit={handleSubmit(onClickAddGroup)}>
             <div>

@@ -37,7 +37,7 @@ let AddUIComponent = ({ handleSubmit, invalid, submitting, reset, data, status, 
                     </div>
                 }
                 {data.length &&
-                    <table align="center"><tr><td>
+                    <table align="center"><tbody><tr><td>
                         <form onSubmit={handleSubmit(onClickSelectContact4Add)}>
                             <label>Select A Contact&nbsp;</label>
                             <Field name="selectAContact" component='select'>
@@ -51,7 +51,7 @@ let AddUIComponent = ({ handleSubmit, invalid, submitting, reset, data, status, 
                             <button type="button" className="btnSubmit" disabled={submitting} onClick={reset}>Clear Values</button>
                             </p><br />
                         </form>
-                    </td></tr></table>
+                    </td></tr></tbody></table>
                 }
             </div>
         }
