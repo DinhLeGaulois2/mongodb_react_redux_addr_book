@@ -18,9 +18,17 @@ Building a project based on an EER (Enhanced Entity-Relationship). The goal is t
 ---
 
 ## User-Interface
-## Listing All Contact
+### Listing All Contact
 
 ![alt text](assets/img/showContacts.jpg)
+
+### Get a Contact so We Could Add Information to ...
+
+![alt text](assets/img/contactInfo4Add.jpg)
+
+### Add an Address to the Selected Contact ...
+
+![alt text](assets/img/add_address.jpg)
 
 ---
 

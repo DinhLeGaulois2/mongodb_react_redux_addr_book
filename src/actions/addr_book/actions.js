@@ -119,6 +119,16 @@ const addr_book_action = {
         }
     },
 
+    selectAContact4Add: (data) => {
+        return dispatch => {
+            addr_book_action.aContact = data.selectAContact
+            dispatch({
+                type: cst.SELECT_A_CONTACT_SUCCESS,
+                payload: data.selectAContact
+            })
+        }
+    },
+
     showContacts: () => {
         return dispatch => {
             axios.get("/api/get/contacts")
@@ -146,16 +156,10 @@ const addr_book_action = {
     },
 
     showAddrByContact: () => {
-        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-        console.log("/api/get/addresse/contact/, start with ifaasfafasd: " + addr_book_action.aContact)
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                console.log("/api/get/addresse/contact/, start with id: " + addr_book_action.aContact)
                 axios.get("/api/get/addresse/contact/" + addr_book_action.aContact)
                     .then(response => {
-                        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                        console.log("/api/get/addresse/contact/, get data: " + JSON.stringify(response, null, 5))
                         dispatch({
                             type: cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS,
                             payload: response.data
@@ -461,7 +465,11 @@ const addr_book_action = {
             if (mainStatus.length) {
                 addr_book_action.aContact = {}
                 axios.get("/api/get/contacts")
-                    .then(response => {
+                    .then(response => {                        
+                        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                        if(mainStatus == cst.MENU_ADD)
+                            console.log("Contact, data: " + JSON.stringify(response, null, 5))
+                        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                         dispatch({ type: mainStatus })
                         dispatch({
                             type: cst.LIST_CONTACTS_SUCCESS,

@@ -26,20 +26,20 @@ const validate = values => {
 }
 
 let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddAddress }) => (
-    <div>
-        <div className="container" style={{ 'backgroundColor': 'white' }}>
+    <div className="container">
+        <table align="center"><tr><td>
             <div align="center" className="mainTitle" style={{
                 'backgroundColor': 'black',
                 'color': 'cyan',
-                'width': '100%',
+                'width': '80%',
                 'borderRadius': "30px",
                 'padding': '10px',
-                'fontSize': '300%',
+                'fontSize': '150%',
                 'fontWeight': 'bold',
                 'textAlign': 'center',
                 'margin': '20px 0px'
             }}>Add Address</div>
-        </div>
+        </td></tr></table>
         <br />
         <form onSubmit={handleSubmit(onClickAddAddress)}>
             <div>

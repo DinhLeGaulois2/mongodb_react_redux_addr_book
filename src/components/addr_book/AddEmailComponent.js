@@ -17,23 +17,23 @@ const validate = values => {
 }
 
 let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddEmail }) => (
-        <div>
-            <div className="container" style={{ 'backgroundColor': 'white' }}>
-                <div align="center" className="mainTitle" style={{
-                    'backgroundColor': 'black',
-                    'color': 'cyan',
-                    'width': '100%',
-                    'borderRadius': "30px",
-                    'padding': '10px',
-                    'fontSize': '300%',
-                    'fontWeight': 'bold',
-                    'textAlign': 'center',
-                    'margin': '20px 0px'
-                }}>Add Email</div>
-            </div>
-            <br />
-            <form onSubmit={handleSubmit(onClickAddEmail)}>
-                <div>
+    <div className="container">
+        <table align="center"><tr><td>
+            <div align="center" className="mainTitle" style={{
+                'backgroundColor': 'black',
+                'color': 'cyan',
+                'width': '80%',
+                'borderRadius': "30px",
+                'padding': '10px',
+                'fontSize': '150%',
+                'fontWeight': 'bold',
+                'textAlign': 'center',
+                'margin': '20px 0px'
+            }}>Add Email</div>
+        </td></tr></table>
+        <br />
+        <form onSubmit={handleSubmit(onClickAddEmail)}>
+            <div>
                 <Field name="type" component='select'>
                     <option></option>
                     <option value="pro">Personal</option>
@@ -41,14 +41,14 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddE
                 </Field>
                 <br />
                 <Field name="email" component={renderInputField} placeholder="Email" /><br />
-                </div>
-                <br /> <hr />
-                <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
+            </div>
+            <br /> <hr />
+            <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
                 <button type="button" className="btnSubmit" disabled={submitting} onClick={reset}>Clear Values</button>
-                </p><br/>
-            </form>
-        </div>
-    )
+            </p><br />
+        </form>
+    </div>
+)
 
 AddEmailComponent.propTypes = {
     onClickAddEmail: PropTypes.func.isRequired
