@@ -13,7 +13,7 @@ const ShowAddrComponent = ({ data, onClickDelete }) => (
             {data.map((aUnit, index) =>
                 <tr key={index}><td>
                     <div className="relative">
-                        <h3 align="center" className="centeredChapterTitle"><b>Addresses</b> (id: {aUnit._id})</h3>
+                        <h3 align="center" className="centeredChapterTitle"><b>Addresse</b> (id: {aUnit._id})</h3>
                         <button type="button" className="btnDelete" onClick={e => {
                             e.preventDefault()
                             onClickDelete(aUnit._id)

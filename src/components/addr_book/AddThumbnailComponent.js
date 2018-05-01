@@ -16,7 +16,7 @@ const validate = values => {
     return errors
 }
 
-let AddThumbnailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddTwitter }) => (
+let AddThumbnailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddThumbnail }) => (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -32,7 +32,7 @@ let AddThumbnailComponent = ({ handleSubmit, invalid, submitting, reset, onClick
             }}>Add Thumbnail</div>
         </td></tr></tbody></table>
         <br />
-        <form onSubmit={handleSubmit(onClickAddTwitter)}>
+        <form onSubmit={handleSubmit(onClickAddThumbnail)}>
             <div>
                 <Field name="mime_type" component={renderInputField} placeholder="Mime Type" /><br />
                 <Field name="data" component={renderInputField} placeholder="Data" /><br />
@@ -46,7 +46,7 @@ let AddThumbnailComponent = ({ handleSubmit, invalid, submitting, reset, onClick
 )
 
 AddThumbnailComponent.propTypes = {
-    onClickAddTwitter: PropTypes.func.isRequired
+    onClickAddThumbnail: PropTypes.func.isRequired
 }
 
 // Reset the form after submission

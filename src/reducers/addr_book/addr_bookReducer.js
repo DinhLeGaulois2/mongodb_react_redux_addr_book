@@ -18,7 +18,7 @@ const a_book = (state = initialStates, action) => {
         case cst.ADD_CONTACT_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
-                selectedContact: action.payload
+                selectedContact: []
             })
         }
 
@@ -115,6 +115,7 @@ const a_book = (state = initialStates, action) => {
         case cst.LIST_CONTACTS_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
+                selectedContact: [],
                 data: action.payload
             })
         }
@@ -170,7 +171,6 @@ const a_book = (state = initialStates, action) => {
                 data: action.payload
             })
         }
-
 
         case cst.LIST_TWITTER_BY_CONTACT_ID: {
             return Object.assign({}, state, {

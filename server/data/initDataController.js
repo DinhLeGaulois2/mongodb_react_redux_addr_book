@@ -30,7 +30,7 @@ const initDataController = (callback) => {
                             city: adr.city,
                             state: adr.state,
                             zip_code: adr.zip_code,
-                            contactsId: aE._id
+                            contactId: aE._id
                         }, (err, response) => {
                             if (err) throw next(err)
                             ind++;

@@ -8,7 +8,7 @@ var twitterSchema = new Schema({
     location: { type: String },
     web: { type: String },
     bio: { type: String },
-    contactsId: {
+    contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contacts"
     }

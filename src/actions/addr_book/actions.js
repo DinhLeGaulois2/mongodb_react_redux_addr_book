@@ -1,5 +1,4 @@
 import axios from "axios"
-
 import cst from '../../constants/addr_book/cst'
 
 const addr_book_action = {
@@ -7,7 +6,11 @@ const addr_book_action = {
 
     addAddress: (data) => {
         return dispatch => {
-            axios.post("/api/add/address", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/address", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_ADDR_SUCCESS,
@@ -33,7 +36,11 @@ const addr_book_action = {
 
     addEmail: (data) => {
         return dispatch => {
-            axios.post("/api/add/email", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/email", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_EMAIL_SUCCESS,
@@ -46,7 +53,11 @@ const addr_book_action = {
 
     addGroup: (data) => {
         return dispatch => {
-            axios.post("/api/add/group", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/group", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_GROUP_SUCCESS,
@@ -59,7 +70,11 @@ const addr_book_action = {
 
     addPhone: (data) => {
         return dispatch => {
-            axios.post("/api/add/phone", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/phone", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_PHONE_SUCCESS,
@@ -72,7 +87,11 @@ const addr_book_action = {
 
     addPortrait: (data) => {
         return dispatch => {
-            axios.post("/api/add/portrait", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/portrait", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_THUMBNAIL_SUCCESS,
@@ -85,7 +104,11 @@ const addr_book_action = {
 
     addThumbnail: (data) => {
         return dispatch => {
-            axios.post("/api/add/thumbnail", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/thumbnail", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_THUMBNAIL_SUCCESS,
@@ -98,7 +121,11 @@ const addr_book_action = {
 
     addTwitter: (data) => {
         return dispatch => {
-            axios.post("/api/add/twitter", data)
+            let obj = {
+                data: data,
+                contactId: addr_book_action.aContact
+            }
+            axios.post("/api/add/twitter", obj)
                 .then(response => {
                     dispatch({
                         type: cst.ADD_TWITTER_SUCCESS,
@@ -463,13 +490,10 @@ const addr_book_action = {
     setStatus: (mainStatus, actionStatus) => {
         return dispatch => {
             if (mainStatus.length) {
-                addr_book_action.aContact = {}
+                addr_book_action.aContact = ""
+                dispatch({ type: cst.SELECT_CONTACT_NULL })
                 axios.get("/api/get/contacts")
-                    .then(response => {                        
-                        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                        if(mainStatus == cst.MENU_ADD)
-                            console.log("Contact, data: " + JSON.stringify(response, null, 5))
-                        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    .then(response => {
                         dispatch({ type: mainStatus })
                         dispatch({
                             type: cst.LIST_CONTACTS_SUCCESS,

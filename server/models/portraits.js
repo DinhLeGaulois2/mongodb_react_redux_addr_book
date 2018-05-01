@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var portraitsSchema = new Schema({
     mime_type: { type: String },
     data: { type: String },
-    contactsId: {
+    contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contacts"
     }

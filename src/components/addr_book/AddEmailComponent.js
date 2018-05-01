@@ -40,7 +40,7 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddE
                     <option value="perso">Profesionnal</option>
                 </Field>
                 <br />
-                <Field name="email" component={renderInputField} placeholder="Email" /><br />
+                <Field name="address" component={renderInputField} placeholder="Email" /><br />
             </div>
             <br /> <hr />
             <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;

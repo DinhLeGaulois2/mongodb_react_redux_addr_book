@@ -13,7 +13,7 @@ const ShowEmailsComponent = ({ data, onClickDelete }) => (
             {data.map((aUnit, index) =>
                 <tr key={index}><td>
                     <div className="relative">
-                        <h3 align="center" className="centeredChapterTitle"><b>Twitter</b> (id: {aUnit._id})</h3>
+                        <h3 align="center" className="centeredChapterTitle"><b>Email</b> (id: {aUnit._id})</h3>
                         <button type="button" className="btnDelete" onClick={e => {
                             e.preventDefault()
                             onClickDelete(aUnit._id)

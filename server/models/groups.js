@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var groupsSchema = new Schema({
     name: { type: String },
-    contactsId: {
+    contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contacts"
     }

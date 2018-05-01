@@ -9,7 +9,7 @@ var addressesSchema = new Schema({
     city: { type: String },
     state: { type: String },
     zip_code: { type: Number },
-    contactsId: {
+    contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contacts"
     }

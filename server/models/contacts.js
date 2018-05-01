@@ -7,7 +7,7 @@ var contactsSchema = new Schema({
     name: { type: String },
     company: { type: String },
     title: { type: String },
-    groupsId: {
+    groupId: {
         type: Schema.Types.ObjectId,
         ref: "Groups"
     }

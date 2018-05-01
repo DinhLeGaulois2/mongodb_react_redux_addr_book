@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var emailsSchema = new Schema({
     type: { type: String },
     address: { type: String },
-    contactsId: {
+    contactId: {
         type: Schema.Types.ObjectId,
         ref: "Contacts"
     }

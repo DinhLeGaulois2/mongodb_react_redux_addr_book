@@ -43,7 +43,7 @@ let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
         <br />
         <form onSubmit={handleSubmit(onClickAddAddress)}>
             <div>
-                <Field name="type" component={renderInputField} placeholder="Mime Type" /><br />
+                <Field name="type" component={renderInputField} placeholder="Type" /><br />
                 <Field name="street" component={renderInputField} placeholder="Street (Number and Name)" /><br />
                 <Field name="city" component={renderInputField} placeholder="City" /><br />
                 <Field name="state" component={renderInputField} placeholder="State" /><br />
