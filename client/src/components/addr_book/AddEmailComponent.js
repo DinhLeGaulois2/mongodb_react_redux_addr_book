@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
 
 const validate = values => {
     const errors = {}
@@ -16,7 +18,10 @@ const validate = values => {
     return errors
 }
 
-let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddEmail }) => (
+class AddEmailComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, addEmail } = this.props
+        return (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -32,7 +37,7 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddE
             }}>Add Email</div>
         </td></tr></tbody></table>
         <br />
-        <form onSubmit={handleSubmit(onClickAddEmail)}>
+        <form onSubmit={handleSubmit(addEmail)}>
             <div>
                 <Field name="type" component='select'>
                     <option></option>
@@ -48,20 +53,19 @@ let AddEmailComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddE
             </p><br />
         </form>
     </div>
-)
-
-AddEmailComponent.propTypes = {
-    onClickAddEmail: PropTypes.func.isRequired
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('AddEmailForm'));
+    dispatch(reset('AddTwitterForm'));
 
-AddEmailComponent = reduxForm({
-    form: 'AddEmailForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddEmailComponent)
-
-export default AddEmailComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddEmailComponent))

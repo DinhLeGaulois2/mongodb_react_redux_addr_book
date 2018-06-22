@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
+
 
 const validate = values => {
     const errors = {}
@@ -16,7 +19,10 @@ const validate = values => {
     return errors
 }
 
-let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddPortrait }) => (
+class AddPortraitComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, addPortrait } = this.props
+        return (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -32,7 +38,7 @@ let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset, onClickA
             }}>Add Portrait</div>
         </td></tr></tbody></table>
         <br />
-        <form onSubmit={handleSubmit(onClickAddPortrait)}>
+        <form onSubmit={handleSubmit(addPortrait)}>
             <div>
                 <Field name="mime_type" component={renderInputField} placeholder="Mime Type" /><br />
                 <Field name="data" component={renderInputField} placeholder="Data" /><br />
@@ -43,20 +49,19 @@ let AddPortraitComponent = ({ handleSubmit, invalid, submitting, reset, onClickA
             </p><br />
         </form>
     </div>
-)
-
-AddPortraitComponent.propTypes = {
-    onClickAddPortrait: PropTypes.func.isRequired
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('AddPortraitForm'));
+    dispatch(reset('AddTwitterForm'));
 
-AddPortraitComponent = reduxForm({
-    form: 'AddPortraitForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddPortraitComponent)
-
-export default AddPortraitComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddPortraitComponent))

@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React, {Component} from 'react'
 import '../../style.scss'
+import { connect } from 'react-redux'
+import actions from '../../actions/addr_book/actions'
 
-import Modal from '../../common/modal/modal'
-
-import cst from '../../constants/addr_book/cst'
-
-const ShowAddrComponent = ({ data, onClickDelete }) => (
+class ShowAddrComponent extends Component {
+    render() {
+        const { data, deleteAddress } = this.props
+        return (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
             {data.map((aUnit, index) =>
@@ -16,7 +15,7 @@ const ShowAddrComponent = ({ data, onClickDelete }) => (
                         <h3 align="center" className="centeredChapterTitle"><b>Addresse</b> (id: {aUnit._id})</h3>
                         <button type="button" className="btnDelete" onClick={e => {
                             e.preventDefault()
-                            onClickDelete(aUnit._id)
+                            deleteAddress(aUnit._id)
                         }}>X</button>
                     </div>
                     <b>Type:</b> {aUnit.type}<br />
@@ -25,19 +24,12 @@ const ShowAddrComponent = ({ data, onClickDelete }) => (
             )}
         </tbody></table>
     </div>
-)
-
-ShowAddrComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string,
-        type: PropTypes.string,
-        street: PropTypes.string,
-        city: PropTypes.string,
-        state: PropTypes.string,
-        zip_code: PropTypes.number,
-        contactsId: PropTypes.string
-    })),
-    onClickDelete: PropTypes.func.isRequired
+        )
+    }
 }
 
-export default ShowAddrComponent
+const mapStateToProps = (state) => ({
+    data: state.addrbook.data,
+})
+
+export default connect(mapStateToProps, actions)(requireAuth(ShowAddrComponent))

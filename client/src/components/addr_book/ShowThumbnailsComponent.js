@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React, {Component} from 'react'
 import '../../style.scss'
+import { connect } from 'react-redux'
+import actions from '../../actions/addr_book/actions'
 
-import Modal from '../../common/modal/modal'
-
-import cst from '../../constants/addr_book/cst'
-
-const ShowThumbnailsComponent = ({ data, onClickDelete }) => (
+class ShowThumbnailsComponent extends Component {
+    render() {
+        const { data, deleteThumbnail } = this.props
+        return (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
             {data.map((aUnit, index) =>
@@ -16,7 +15,7 @@ const ShowThumbnailsComponent = ({ data, onClickDelete }) => (
                         <h3 align="center" className="centeredChapterTitle"><b>Thumbnail</b> (id: {aUnit._id})</h3>
                         <button type="button" className="btnDelete" onClick={e => {
                             e.preventDefault()
-                            onClickDelete(aUnit._id)
+                            deleteThumbnail(aUnit._id)
                         }}>X</button>
                     </div>
                     {aUnit.mime_type.length &&
@@ -29,16 +28,13 @@ const ShowThumbnailsComponent = ({ data, onClickDelete }) => (
             )}
         </tbody></table>
     </div>
-)
-
-ShowThumbnailsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string,
-        mime_type: PropTypes.string,
-        data: PropTypes.string,
-        contactsId: PropTypes.string
-    })),
-    onClickDelete: PropTypes.func.isRequired
+        )
+    }
 }
 
-export default ShowThumbnailsComponent
+const mapStateToProps = (state) => ({
+    data: state.addrbook.data,
+    contact: state.addrbook.selectedContact
+})
+
+export default connect(mapStateToProps, actions)(requireAuth(ShowThumbnailsComponent))

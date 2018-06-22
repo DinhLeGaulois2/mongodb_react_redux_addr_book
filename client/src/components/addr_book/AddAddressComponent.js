@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
+import cst from '../../constants/addr_book/cst'
 
 const validate = values => {
     const errors = {}
@@ -25,50 +28,52 @@ const validate = values => {
     return errors
 }
 
-let AddAddressComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddAddress }) => (
-    <div className="container">
-        <table align="center"><tbody><tr><td>
-            <div align="center" className="mainTitle" style={{
-                'backgroundColor': 'black',
-                'color': 'cyan',
-                'width': '80%',
-                'borderRadius': "30px",
-                'padding': '10px',
-                'fontSize': '150%',
-                'fontWeight': 'bold',
-                'textAlign': 'center',
-                'margin': '20px 0px'
-            }}>Add Address</div>
-        </td></tr></tbody></table>
-        <br />
-        <form onSubmit={handleSubmit(onClickAddAddress)}>
-            <div>
-                <Field name="type" component={renderInputField} placeholder="Type" /><br />
-                <Field name="street" component={renderInputField} placeholder="Street (Number and Name)" /><br />
-                <Field name="city" component={renderInputField} placeholder="City" /><br />
-                <Field name="state" component={renderInputField} placeholder="State" /><br />
-                <Field name="zip_code" component={renderInputField} placeholder="Zip Code" /><br />
-            </div>
-            <br /> <hr />
-            <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
+class AddAddressComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, addAddress } = this.props
+        return (
+            <div className="container">
+                <table align="center"><tbody><tr><td>
+                    <div align="center" className="mainTitle" style={{
+                        'backgroundColor': 'black',
+                        'color': 'cyan',
+                        'width': '80%',
+                        'borderRadius': "30px",
+                        'padding': '10px',
+                        'fontSize': '150%',
+                        'fontWeight': 'bold',
+                        'textAlign': 'center',
+                        'margin': '20px 0px'
+                    }}>Add Address</div>
+                </td></tr></tbody></table>
+                <br />
+                <form onSubmit={handleSubmit(addAddress)}>
+                    <div>
+                        <Field name="type" component={renderInputField} placeholder="Type" /><br />
+                        <Field name="street" component={renderInputField} placeholder="Street (Number and Name)" /><br />
+                        <Field name="city" component={renderInputField} placeholder="City" /><br />
+                        <Field name="state" component={renderInputField} placeholder="State" /><br />
+                        <Field name="zip_code" component={renderInputField} placeholder="Zip Code" /><br />
+                    </div>
+                    <br /> <hr />
+                    <p align="center"><button type="submit" className="btnSubmit" disabled={invalid || submitting}>Submit</button>&nbsp;&nbsp;&nbsp;
                 <button type="button" className="btnSubmit" disabled={submitting} onClick={reset}>Clear Values</button>
-            </p><br />
-        </form>
-    </div>
-)
-
-AddAddressComponent.propTypes = {
-    onClickAddAddress: PropTypes.func.isRequired
+                    </p><br />
+                </form>
+            </div>
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('AddAddressForm'));
+    dispatch(reset('AddTwitterForm'));
 
-AddAddressComponent = reduxForm({
-    form: 'AddAddressForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddAddressComponent)
-
-export default AddAddressComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddAddressComponent))

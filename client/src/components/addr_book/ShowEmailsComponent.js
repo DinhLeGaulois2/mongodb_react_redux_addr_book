@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React, {Component} from 'react'
 import '../../style.scss'
+import { connect } from 'react-redux'
+import actions from '../../actions/addr_book/actions'
 
-import Modal from '../../common/modal/modal'
-
-import cst from '../../constants/addr_book/cst'
-
-const ShowEmailsComponent = ({ data, onClickDelete }) => (
+class ShowEmailsComponent extends Component {
+    render() {
+        const { data, deleteEmail } = this.props
+        return (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
             {data.map((aUnit, index) =>
@@ -16,7 +15,7 @@ const ShowEmailsComponent = ({ data, onClickDelete }) => (
                         <h3 align="center" className="centeredChapterTitle"><b>Email</b> (id: {aUnit._id})</h3>
                         <button type="button" className="btnDelete" onClick={e => {
                             e.preventDefault()
-                            onClickDelete(aUnit._id)
+                            deleteEmail(aUnit._id)
                         }}>X</button>
                     </div>
                     <b>Type:</b> {aUnit.type}<br />
@@ -25,16 +24,13 @@ const ShowEmailsComponent = ({ data, onClickDelete }) => (
             )}
         </tbody></table>
     </div>
-)
-
-ShowEmailsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string,
-        type: PropTypes.string,
-        address: PropTypes.string,
-        contactsId: PropTypes.string
-    })),
-    onClickDelete: PropTypes.func.isRequired
+        )
+    }
 }
 
-export default ShowEmailsComponent
+const mapStateToProps = (state) => ({
+    data: state.addrbook.data,
+    contact: state.addrbook.selectedContact
+})
+
+export default connect(mapStateToProps, actions)(requireAuth(ShowEmailsComponent))

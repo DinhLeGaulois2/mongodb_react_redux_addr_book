@@ -1,56 +1,55 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React, {Component} from 'react'
 import '../../style.scss'
+import { connect } from 'react-redux'
+import actions from '../../actions/addr_book/actions'
 
-import Modal from '../../common/modal/modal'
-
-import cst from '../../constants/addr_book/cst'
-
-import ShowAddrContainer from '../../containers/addr_book/ShowAddrContainer'
-import ShowContactsContainer from '../../containers/addr_book/ShowContactsContainer'
-import ShowEmailsContainer from '../../containers/addr_book/ShowEmailsContainer'
-import ShowGroupsContainer from '../../containers/addr_book/ShowGroupsContainer'
-import ShowPhonesContainer from '../../containers/addr_book/ShowPhonesContainer'
-import ShowPortraitsContainer from '../../containers/addr_book/ShowPortraitsContainer'
-import ShowThumbnailsContainer from '../../containers/addr_book/ShowThumbnailsContainer'
-import ShowTwitterContainer from '../../containers/addr_book/ShowTwitterContainer'
+import ShowAddrComponent from '../../Components/addr_book/ShowAddrComponent'
+import ShowContactsComponent from '../../Components/addr_book/ShowContactsComponent'
+import ShowEmailsComponent from '../../Components/addr_book/ShowEmailsComponent'
+import ShowGroupsComponent from '../../Components/addr_book/ShowGroupsComponent'
+import ShowPhonesComponent from '../../Components/addr_book/ShowPhonesComponent'
+import ShowPortraitsComponent from '../../Components/addr_book/ShowPortraitsComponent'
+import ShowThumbnailsComponent from '../../Components/addr_book/ShowThumbnailsComponent'
+import ShowTwitterComponent from '../../Components/addr_book/ShowTwitterComponent'
 
 
-const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, onClickChangeStatus, onClickSelectAContact,
-    onClick_showPhoneByContact, onClick_showEmailByContact, onClick_showGroupByContact, onClick_showTwitterByContact,
-    onClick_showThumbnailByContact, onClick_showPortraitByContact, onClick_showAddrByContact }) => (
+class ShowContactsComponent extends Component {
+    render() {
+        const { data, selectedContact, status, deleteContact, setStatus, selectAContact,
+    showPhoneByContact, showEmailByContact, showGroupByContact, showTwitterByContact,
+    showThumbnailByContact, showPortraitByContact, showAddrByContact } = this.props
+    return (
         <div>
             {status == cst.SELECT_A_CONTACT_SUCCESS &&
                 <div>
                     <table align="center" style={{ 'backgroundColor': 'black', 'width': '100%' }}><tbody><tr><td align="center" style={{ 'padding': '10px' }}>
                         <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showAddrByContact()
+                            showAddrByContact()
                         }}>Addresses</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showPhoneByContact()
+                            showPhoneByContact()
                         }}>Phones</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showEmailByContact()
+                            showEmailByContact()
                         }}>Emails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showPortraitByContact()
+                            showPortraitByContact()
                         }}>Portraits</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showThumbnailByContact()
+                            showThumbnailByContact()
                         }}>Thumbnails</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showTwitterByContact()
+                            showTwitterByContact()
                         }}>Twitter</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <button type="button" className="btn" onClick={e => {
                             e.preventDefault()
-                            onClick_showGroupByContact()
+                            showGroupByContact()
                         }}>Groups</button>
                         <br />
                     </td></tr></tbody></table>
@@ -65,7 +64,7 @@ const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, o
                                 <h3 align="center" className="centeredChapterTitle"><b>{aUnit.name}</b></h3>
                                 <button type="button" className="btnDelete" onClick={e => {
                                     e.preventDefault()
-                                    onClickDelete(aUnit._id)
+                                    deleteContact(aUnit._id)
                                 }}>X</button>
                             </div>
                             <div style={{ 'padding': '10px', 'backgroundColor': 'black', 'color': 'white', 'borderRadius': '10px' }}>
@@ -76,7 +75,7 @@ const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, o
                             <p align="center">
                                 <button type="button" className="btn" onClick={e => {
                                     e.preventDefault()
-                                    onClickSelectAContact(aUnit._id)
+                                    selectAContact(aUnit._id)
                                 }}>Select</button>
                             </p>
                             <hr />
@@ -85,50 +84,35 @@ const ShowContactsComponent = ({ data, selectedContact, status, onClickDelete, o
                 </tbody></table>
             }
             {status === cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS &&
-                <ShowAddrContainer />
+                <ShowAddrComponent />
             }
             {status === cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS &&
-                <ShowPhonesContainer />
+                <ShowPhonesComponent />
             }
             {status === cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS &&
-                <ShowEmailsContainer />
+                <ShowEmailsComponent />
             }
             {status === cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS &&
-                <ShowPortraitsContainer />
+                <ShowPortraitsComponent />
             }
             {status === cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS &&
-                <ShowThumbnailsContainer />
+                <ShowThumbnailsComponent />
             }
             {status === cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS &&
-                <ShowTwitterContainer />
+                <ShowTwitterComponent />
             }
             {status === cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS &&
-                <ShowGroupsContainer />
+                <ShowGroupsComponent />
             }
         </div>
-    )
-
-const selectAContactShape = {
-    _id: PropTypes.string,
-    name: PropTypes.string,
-    company: PropTypes.string,
-    title: PropTypes.string
+        )
+    }
 }
 
-ShowContactsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape(selectAContactShape)),
-    selectedContact: PropTypes.arrayOf(PropTypes.shape(selectAContactShape)),
-    status: PropTypes.string,
-    onClickDelete: PropTypes.func.isRequired,
-    onClickChangeStatus: PropTypes.func.isRequired,
-    onClickSelectAContact: PropTypes.func.isRequired,
-    onClick_showPhoneByContact: PropTypes.func.isRequired,
-    onClick_showEmailByContact: PropTypes.func.isRequired,
-    onClick_showGroupByContact: PropTypes.func.isRequired,
-    onClick_showTwitterByContact: PropTypes.func.isRequired,
-    onClick_showThumbnailByContact: PropTypes.func.isRequired,
-    onClick_showPortraitByContact: PropTypes.func.isRequired,
-    onClick_showAddrByContact: PropTypes.func.isRequired,
-}
+const mapStateToProps = (state) => ({
+    data: state.addrbook.data,
+    status: state.addrbook.status,
+    selectedContact: state.addrbook.selectedContact
+})
 
-export default ShowContactsComponent
+export default connect(mapStateToProps, actions)(requireAuth(ShowContactsComponent))

@@ -1,13 +1,12 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React, {Component} from 'react'
 import '../../style.scss'
+import { connect } from 'react-redux'
+import actions from '../../actions/addr_book/actions'
 
-import Modal from '../../common/modal/modal'
-
-import cst from '../../constants/addr_book/cst'
-
-const ShowGroupsComponent = ({ data, onClickDelete }) => (
+class ShowGroupsComponent extends Component {
+    render() {
+        const { data, deleteGroup } = this.props
+        return (
     <div>
         <table align="center" style={{ 'width': '80%' }}><tbody>
             {data.map((aUnit, index) =>
@@ -16,7 +15,7 @@ const ShowGroupsComponent = ({ data, onClickDelete }) => (
                         <h3 align="center" className="centeredChapterTitle"><b>Group</b> (id: {aUnit._id})</h3>
                         <button type="button" className="btnDelete" onClick={e => {
                             e.preventDefault()
-                            onClickDelete(aUnit._id)
+                            deleteGroup(aUnit._id)
                         }}>X</button>
                     </div>
                     <b>Name:</b> {aUnit.name}<br />
@@ -24,15 +23,13 @@ const ShowGroupsComponent = ({ data, onClickDelete }) => (
             )}
         </tbody></table>
     </div>
-)
-
-ShowGroupsComponent.propTypes = {
-    data: PropTypes.arrayOf(PropTypes.shape({
-        _id: PropTypes.string,
-        name: PropTypes.string,
-        contactsId: PropTypes.string
-    })),
-    onClickDelete: PropTypes.func.isRequired
+        )
+    }
 }
 
-export default ShowGroupsComponent
+const mapStateToProps = (state) => ({
+    data: state.addrbook.data,
+    contact: state.addrbook.selectedContact
+})
+
+export default connect(mapStateToProps, actions)(requireAuth(ShowGroupsComponent))

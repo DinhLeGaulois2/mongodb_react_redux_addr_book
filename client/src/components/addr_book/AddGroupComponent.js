@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
+
 
 const validate = values => {
     const errors = {}
@@ -13,7 +16,10 @@ const validate = values => {
     return errors
 }
 
-let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddGroup }) => (
+class AddGroupComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, addGroup } = this.props
+        return (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -29,7 +35,7 @@ let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddG
             }}>Add Group</div>
         </td></tr></tbody></table>
         <br />
-        <form onSubmit={handleSubmit(onClickAddGroup)}>
+        <form onSubmit={handleSubmit(addGroup)}>
             <div>
                 <Field name="name" component={renderInputField} placeholder="Name" /><br />
             </div>
@@ -39,20 +45,19 @@ let AddGroupComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddG
             </p><br />
         </form>
     </div>
-)
-
-AddGroupComponent.propTypes = {
-    onClickAddGroup: PropTypes.func.isRequired
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('AddGroupForm'));
+    dispatch(reset('AddTwitterForm'));
 
-AddGroupComponent = reduxForm({
-    form: 'AddGroupForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddGroupComponent)
-
-export default AddGroupComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddGroupComponent))

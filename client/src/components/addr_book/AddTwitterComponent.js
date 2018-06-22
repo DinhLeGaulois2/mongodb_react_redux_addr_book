@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
 
 const validate = values => {
     const errors = {}
@@ -22,7 +24,10 @@ const validate = values => {
     return errors
 }
 
-let AddTwitterComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddTwitter }) => (
+class AddTwitterComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, onClickAddTwitter } = this.props
+        return (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -51,20 +56,19 @@ let AddTwitterComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
             </p><br />
         </form>
     </div>
-)
-
-AddTwitterComponent.propTypes = {
-    onClickAddTwitter: PropTypes.func.isRequired
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
     dispatch(reset('AddTwitterForm'));
 
-AddTwitterComponent = reduxForm({
-    form: 'AddTwitterForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddTwitterComponent)
-
-export default AddTwitterComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddTwitterComponent))

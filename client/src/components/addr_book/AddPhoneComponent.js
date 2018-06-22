@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
 
 const validate = values => {
     const errors = {}
@@ -16,7 +18,10 @@ const validate = values => {
     return errors
 }
 
-let AddPhoneComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddPhone }) => (
+class AddPhoneComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, addPhone } = this.props
+        return (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -32,7 +37,7 @@ let AddPhoneComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddP
             }}>Add Phone</div>
         </td></tr></tbody></table>
         <br />
-        <form onSubmit={handleSubmit(onClickAddPhone)}>
+        <form onSubmit={handleSubmit(addPhone)}>
             <div>
                 <Field name="type" component='select'>
                     <option></option>
@@ -47,20 +52,19 @@ let AddPhoneComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddP
             </p><br />
         </form>
     </div>
-)
-
-AddPhoneComponent.propTypes = {
-    onClickAddPhone: PropTypes.func.isRequired
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('AddPhoneForm'));
+    dispatch(reset('AddTwitterForm'));
 
-AddPhoneComponent = reduxForm({
-    form: 'AddPhoneForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddPhoneComponent)
-
-export default AddPhoneComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddPhoneComponent))

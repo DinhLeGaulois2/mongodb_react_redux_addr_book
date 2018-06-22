@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { reduxForm, Field, reset } from 'redux-form'
+import { renderInputField } from '../../common/reduxForm/renderField'
 import { connect } from 'react-redux'
-import { reduxForm, Field, reset, formValueSelector } from 'redux-form'
-import PropTypes from 'prop-types'
-import { renderInputField, renderTextareaField } from '../../common/reduxForm/renderField'
+import { compose } from 'redux'
+import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth';
+
 
 const validate = values => {
     const errors = {}
@@ -19,7 +22,10 @@ const validate = values => {
     return errors
 }
 
-let AddContactComponent = ({ handleSubmit, invalid, submitting, reset, onClickAddContact }) => (
+class AddContactComponent extends Component {
+    render() {
+        const { handleSubmit, invalid, submitting, reset, addContact } = this.props
+        return (
     <div className="container">
         <table align="center"><tbody><tr><td>
             <div align="center" className="mainTitle" style={{
@@ -35,7 +41,7 @@ let AddContactComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
             }}>Add Contact</div>
         </td></tr></tbody></table>
         <br />
-        <form onSubmit={handleSubmit(onClickAddContact)}>
+        <form onSubmit={handleSubmit(addContact)}>
             <div>
                 <Field name="name" component={renderInputField} placeholder="Name" /><br />
                 <Field name="company" component={renderInputField} placeholder="Company" /><br />
@@ -47,20 +53,19 @@ let AddContactComponent = ({ handleSubmit, invalid, submitting, reset, onClickAd
             </p><br />
         </form>
     </div>
-)
-
-AddContactComponent.propTypes = {
-    onClickAddContact: PropTypes.func.isRequired
+        )
+    }
 }
 
 // Reset the form after submission
 const afterSubmit = (result, dispatch) =>
-    dispatch(reset('AddContactForm'));
+    dispatch(reset('AddTwitterForm'));
 
-AddContactComponent = reduxForm({
-    form: 'AddContactForm',
-    validate,
-    onSubmitSuccess: afterSubmit
-})(AddContactComponent)
-
-export default AddContactComponent
+export default compose(
+    connect(null, actions),
+    reduxForm({
+        form: 'AddTwitterForm',
+        validate,
+        onSubmitSuccess: afterSubmit
+    })
+)(requireAuth(AddContactComponent))
