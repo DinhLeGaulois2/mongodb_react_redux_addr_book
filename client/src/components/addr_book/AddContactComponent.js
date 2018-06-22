@@ -27,19 +27,7 @@ class AddContactComponent extends Component {
         const { handleSubmit, invalid, submitting, reset, addContact } = this.props
         return (
     <div className="container">
-        <table align="center"><tbody><tr><td>
-            <div align="center" className="mainTitle" style={{
-                'backgroundColor': 'black',
-                'color': 'cyan',
-                'width': '80%',
-                'borderRadius': "30px",
-                'padding': '10px',
-                'fontSize': '150%',
-                'fontWeight': 'bold',
-                'textAlign': 'center',
-                'margin': '20px 0px'
-            }}>Add Contact</div>
-        </td></tr></tbody></table>
+        <h1 align='center'>Add Contact</h1>
         <br />
         <form onSubmit={handleSubmit(addContact)}>
             <div>

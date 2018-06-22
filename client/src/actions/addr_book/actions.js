@@ -10,7 +10,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/address", obj)
+            axios.post("http://localhost:3090/api/add/address", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_ADDR_SUCCESS,
@@ -23,7 +27,11 @@ const addr_book_action = {
 
     addContact: (data) => {
         return dispatch => {
-            axios.post("/api/add/contact", data)
+            axios.post("http://localhost:3090/api/add/contact", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_CONTACT_SUCCESS,
@@ -40,7 +48,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/email", obj)
+            axios.post("http://localhost:3090/api/add/email", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_EMAIL_SUCCESS,
@@ -57,7 +69,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/group", obj)
+            axios.post("http://localhost:3090/api/add/group", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_GROUP_SUCCESS,
@@ -74,7 +90,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/phone", obj)
+            axios.post("http://localhost:3090/api/add/phone", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_PHONE_SUCCESS,
@@ -91,7 +111,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/portrait", obj)
+            axios.post("http://localhost:3090/api/add/portrait", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_THUMBNAIL_SUCCESS,
@@ -108,7 +132,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/thumbnail", obj)
+            axios.post("http://localhost:3090/api/add/thumbnail", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_THUMBNAIL_SUCCESS,
@@ -125,7 +153,11 @@ const addr_book_action = {
                 data: data,
                 contactId: addr_book_action.aContact
             }
-            axios.post("/api/add/twitter", obj)
+            axios.post("http://localhost:3090/api/add/twitter", obj, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.ADD_TWITTER_SUCCESS,
@@ -158,7 +190,11 @@ const addr_book_action = {
 
     showContacts: () => {
         return dispatch => {
-            axios.get("/api/get/contacts")
+            axios.get("http://localhost:3090/api/get/contacts", {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.LIST_CONTACTS_SUCCESS,
@@ -171,7 +207,11 @@ const addr_book_action = {
 
     showGroups: () => {
         return dispatch => {
-            axios.get("/api/get/groups")
+            axios.get("http://localhost:3090/api/get/groups", {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.LIST_GROUPS_SUCCESS,
@@ -185,7 +225,11 @@ const addr_book_action = {
     showAddrByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/addresse/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/addresse/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS,
@@ -200,7 +244,11 @@ const addr_book_action = {
     showPhoneByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/phone/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/phone/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS,
@@ -215,7 +263,11 @@ const addr_book_action = {
     showEmailByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/email/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/email/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS,
@@ -230,7 +282,11 @@ const addr_book_action = {
     showGroupByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/group/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/group/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS,
@@ -245,7 +301,11 @@ const addr_book_action = {
     showTwitterByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/twitter/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/twitter/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS,
@@ -260,7 +320,11 @@ const addr_book_action = {
     showThumbnailByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/thumbnail/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/thumbnail/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS,
@@ -275,7 +339,11 @@ const addr_book_action = {
     showPortraitByContact: () => {
         if (addr_book_action.aContact.length > 0) {
             return dispatch => {
-                axios.get("/api/get/portrait/contact/" + addr_book_action.aContact)
+                axios.get("http://localhost:3090/api/get/portrait/contact/" + addr_book_action.aContact, {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({
                             type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
@@ -289,7 +357,11 @@ const addr_book_action = {
 
     deleteAddress: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/address/" + id)
+            axios.delete("http://localhost:3090/api/delete/address/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_ADDR_SUCCESS,
@@ -302,7 +374,11 @@ const addr_book_action = {
 
     deleteContact: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/contact/" + id)
+            axios.delete("http://localhost:3090/api/delete/contact/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_CONTACT_SUCCESS,
@@ -315,7 +391,11 @@ const addr_book_action = {
 
     deleteEmail: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/email/" + id)
+            axios.delete("http://localhost:3090/api/delete/email/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_EMAIL_SUCCESS,
@@ -328,7 +408,11 @@ const addr_book_action = {
 
     deleteGroup: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/group/" + id)
+            axios.delete("http://localhost:3090/api/delete/group/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_GROUP_SUCCESS,
@@ -341,7 +425,11 @@ const addr_book_action = {
 
     deletePhone: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/phone/" + id)
+            axios.delete("http://localhost:3090/api/delete/phone/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_PHONE_SUCCESS,
@@ -354,7 +442,11 @@ const addr_book_action = {
 
     deletePortrait: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/portrait/" + id)
+            axios.delete("http://localhost:3090/api/delete/portrait/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_PORTRAIT_SUCCESS,
@@ -367,7 +459,11 @@ const addr_book_action = {
 
     deleteThumbnail: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/thumbnail/" + id)
+            axios.delete("http://localhost:3090/api/delete/thumbnail/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_THUMBNAIL_SUCCESS,
@@ -380,7 +476,11 @@ const addr_book_action = {
 
     deleteTwitter: (id) => {
         return dispatch => {
-            axios.delete("/api/delete/twitter/" + id)
+            axios.delete("http://localhost:3090/api/delete/twitter/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.DELETE_TWITTER_SUCCESS,
@@ -393,7 +493,11 @@ const addr_book_action = {
 
     updateAddress: (data) => {
         return dispatch => {
-            axios.put("/api/update/address/", data)
+            axios.put("http://localhost:3090/api/update/address/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_ADDR_SUCCESS,
@@ -405,7 +509,11 @@ const addr_book_action = {
 
     updateContact: (data) => {
         return dispatch => {
-            axios.put("/api/update/contact/", data)
+            axios.put("http://localhost:3090/api/update/contact/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_CONTACT_SUCCESS,
@@ -417,7 +525,11 @@ const addr_book_action = {
 
     updateEmail: (data) => {
         return dispatch => {
-            axios.put("/api/update/email/", data)
+            axios.put("http://localhost:3090/api/update/email/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_EMAIL_SUCCESS,
@@ -429,7 +541,11 @@ const addr_book_action = {
 
     updateGroup: (data) => {
         return dispatch => {
-            axios.put("/api/update/group/", data)
+            axios.put("http://localhost:3090/api/update/group/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_GROUP_SUCCESS,
@@ -441,7 +557,11 @@ const addr_book_action = {
 
     updatePhone: (data) => {
         return dispatch => {
-            axios.put("/api/update/phone/", data)
+            axios.put("http://localhost:3090/api/update/phone/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_PHONE_SUCCESS,
@@ -453,7 +573,11 @@ const addr_book_action = {
 
     updatePortrait: (data) => {
         return dispatch => {
-            axios.put("/api/update/portrait/", data)
+            axios.put("http://localhost:3090/api/update/portrait/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_PORTRAIT_SUCCESS,
@@ -465,7 +589,11 @@ const addr_book_action = {
 
     updateThumbnail: (data) => {
         return dispatch => {
-            axios.put("/api/update/thumbnail/", data)
+            axios.put("http://localhost:3090/api/update/thumbnail/", data, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_THUMBNAIL_SUCCESS,
@@ -477,7 +605,11 @@ const addr_book_action = {
 
     updateTwitter: (id) => {
         return dispatch => {
-            axios.put("/api/update/twitter/" + id)
+            axios.put("http://localhost:3090/api/update/twitter/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
                 .then(response => {
                     dispatch({
                         type: cst.UPDATE_TWITTER_SUCCESS,
@@ -492,7 +624,11 @@ const addr_book_action = {
             if (mainStatus.length) {
                 addr_book_action.aContact = ""
                 dispatch({ type: cst.SELECT_CONTACT_NULL })
-                axios.get("/api/get/contacts")
+                axios.get("http://localhost:3090/api/get/contacts", {
+                    headers: {
+                        'authorization': localStorage.getItem('token')
+                    }
+                })
                     .then(response => {
                         dispatch({ type: mainStatus })
                         dispatch({

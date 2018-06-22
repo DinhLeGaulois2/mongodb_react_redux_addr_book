@@ -4,10 +4,9 @@ const initialStates = {
     data: [],
     selectedContact: [],
     status: cst.LIST_THUMBNAILS,
-    menuStatus: cst.MENU_NEUTRAL
 }
 
-const a_book = (state = initialStates, action) => {
+const addr_bookReducer = (state = initialStates, action) => {
     switch (action.type) {
         case cst.ADD_CONTACT: {
             return Object.assign({}, state, {
@@ -323,36 +322,8 @@ const a_book = (state = initialStates, action) => {
                 selectedContact: state.data.filter(a => a._id == action.payload ? a : null)
             })
         }
-        case cst.MENU_ADD: {
-            return Object.assign({}, state, {
-                menuStatus: action.type
-            })
-        }
-        case cst.MENU_DISPLAY: {
-            return Object.assign({}, state, {
-                menuStatus: action.type
-            })
-        }
-        case cst.MENU_NEUTRAL: {
-            return Object.assign({}, state, {
-                menuStatus: action.type
-            })
-        }
-
-        case cst.MENU_ADD: {
-            return Object.assign({}, state, {
-                menuStatus: action.type
-            })
-        }
-
-        case cst.MENU_DISPLAY: {
-            return Object.assign({}, state, {
-                menuStatus: action.type
-            })
-        }
-
+        default: return state
     }
-    return state;
 }
 
-export default a_book
+export default addr_bookReducer

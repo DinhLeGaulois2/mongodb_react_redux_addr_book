@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import '../../style.scss'
 import { connect } from 'react-redux'
 import actions from '../../actions/addr_book/actions'
@@ -8,38 +8,38 @@ class ShowTwitterComponent extends Component {
     render() {
         const { data, deleteTwitter } = this.props
         return (
-    <div>
-        <div className="relative">
-        </div>
-        <table align="center" style={{ 'width': '80%' }}><tbody>
-            {data.map((aUnit, index) =>
-                <tr key={index}><td>
-                    <div className="relative">
-                        <h3 align="center" className="centeredChapterTitle"><b>Twitter</b> (id: {aUnit._id})</h3>
-                        <button type="button" className="btnDelete" onClick={e => {
-                            e.preventDefault()
-                            deleteTwitter(aUnit._id)
-                        }}>X</button>
-                    </div>
-                    <b>Name:</b> {aUnit.name}<br />
-                    <b>Location:</b> {aUnit.location}<br />
-                    {aUnit.web.length &&
-                        <span><b>Web:</b> {aUnit.web}<br /></span>
-                    }
-                    {aUnit.bio.length &&
-                        <span><b>Biography:</b> {aUnit.bio}<br /></span>
-                    }
-                </td></tr>
-            )}
-        </tbody></table>
-    </div>
+            <div>
+                <div className="relative">
+                </div>
+                <table align="center" style={{ 'width': '80%' }}><tbody>
+                    {data.map((aUnit, index) =>
+                        <tr key={index}><td>
+                            <div className="relative">
+                                <h3 align="center" className="centeredChapterTitle"><b>Twitter</b> (id: {aUnit._id})</h3>
+                                <button type="button" className="btnDelete" onClick={e => {
+                                    e.preventDefault()
+                                    deleteTwitter(aUnit._id)
+                                }}>X</button>
+                            </div>
+                            <b>Name:</b> {aUnit.name}<br />
+                            <b>Location:</b> {aUnit.location}<br />
+                            {aUnit.web.length &&
+                                <span><b>Web:</b> {aUnit.web}<br /></span>
+                            }
+                            {aUnit.bio.length &&
+                                <span><b>Biography:</b> {aUnit.bio}<br /></span>
+                            }
+                        </td></tr>
+                    )}
+                </tbody></table>
+            </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    data: state.addrbook.data,
-    contact: state.addrbook.selectedContact
+    data: state.adrBook.data,
+    contact: state.adrBook.selectedContact
 })
 
 export default connect(mapStateToProps, actions)(requireAuth(ShowTwitterComponent))

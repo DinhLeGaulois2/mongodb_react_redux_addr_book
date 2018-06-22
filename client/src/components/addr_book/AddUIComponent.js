@@ -20,14 +20,16 @@ class AddUIComponent extends React.Component {
                 <div style={{ "backgroundColor": "black" }}>
                     <br />
                     <p align="center">
-                        <NavLink to={`${match.url}/AddAddressComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddContactComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddEmailComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddGroupComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddPhoneComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddPortraitComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddThumbnailComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
-                        <NavLink to={`${match.url}/AddTwitterComponent`} className="navLink" activeStyle={{ color: 'blue' }}></NavLink>
+                        <NavLink to={`${match.url}/AddAddressComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Address</NavLink>
+                        <NavLink to={`${match.url}/AddContactComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Contact</NavLink>
+                        <NavLink to={`${match.url}/AddEmailComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Email</NavLink>
+                        <NavLink to={`${match.url}/AddGroupComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Group</NavLink>
+                    </p>
+                    <p align="center">
+                        <NavLink to={`${match.url}/AddPhoneComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Phone</NavLink>
+                        <NavLink to={`${match.url}/AddPortraitComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Portrait</NavLink>
+                        <NavLink to={`${match.url}/AddThumbnailComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Thumbnail</NavLink>
+                        <NavLink to={`${match.url}/AddTwitterComponent`} className="navLink" activeStyle={{ color: 'blue' }}>Add Twitter</NavLink>
                     </p>
                     <br />
                 </div>

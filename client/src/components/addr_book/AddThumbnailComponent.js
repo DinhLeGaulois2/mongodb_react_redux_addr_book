@@ -23,19 +23,7 @@ class AddThumbnailComponent extends Component {
         const { handleSubmit, invalid, submitting, reset, addTwitter } = this.props
         return (
     <div className="container">
-        <table align="center"><tbody><tr><td>
-            <div align="center" className="mainTitle" style={{
-                'backgroundColor': 'black',
-                'color': 'cyan',
-                'width': '80%',
-                'borderRadius': "30px",
-                'padding': '10px',
-                'fontSize': '150%',
-                'fontWeight': 'bold',
-                'textAlign': 'center',
-                'margin': '20px 0px'
-            }}>Add Thumbnail</div>
-        </td></tr></tbody></table>
+        <h1 align='center'>Add Thumbnail</h1>
         <br />
         <form onSubmit={handleSubmit(addTwitter)}>
             <div>
