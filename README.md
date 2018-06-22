@@ -1,7 +1,9 @@
 # Address Book - MongoDB + React-Redux
 
 ## Aim
-Building a project based on an EER (Enhanced Entity-Relationship). The goal is to learn to build project base on someone's idea, which is much more difficult than with ours.
+Building a project based on an EER (Enhanced Entity-Relationship) **from scratch**.
+
+Front-end and Back-end could be deployed on different servers, independently. We could use "**load balancing**" easily on server-side...
 
 > This project is one of about 30-35 others building by mixing:
 >   * Front-End: **jQuery**, **ReactJS**, **React-Redux**, **Angular** (2-5), **Ionic3**, **View.js**
