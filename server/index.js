@@ -4,7 +4,6 @@ const http = require('http');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
-const router = require('./router');
 const mongoose = require('mongoose');
 const cors = require('cors');
 
@@ -16,7 +15,11 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(bodyParser.json({ type: '*/*'}));
 
-router(app);
+require("./routes/api-routes-delete.js")(app);
+require("./routes/api-routes-insert.js")(app);
+require("./routes/api-routes-read.js")(app);
+require("./routes/api-routes-update.js")(app);
+require("./routes/auth-routes.js")(app);
 
 // server Setup
 const port = process.env.PORT || 3090;
