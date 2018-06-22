@@ -189,6 +189,8 @@ const addr_book_action = {
     },
 
     showContacts: () => {
+        //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+        console.log("actions, showContacts! token: " + localStorage.getItem('token'))
         return dispatch => {
             axios.get("http://localhost:3090/api/get/contacts", {
                 headers: {
@@ -196,6 +198,8 @@ const addr_book_action = {
                 }
             })
                 .then(response => {
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("actions, showContacts! response: " + JSON.stringify(response, null, 5))
                     dispatch({
                         type: cst.LIST_CONTACTS_SUCCESS,
                         payload: response.data

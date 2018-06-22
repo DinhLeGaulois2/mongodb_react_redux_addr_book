@@ -219,7 +219,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_CONTACT_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.LIST_CONTACTS_SUCCESS,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_GROUP: {
@@ -230,7 +230,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_GROUP_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_ADDR: {
@@ -241,7 +241,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_ADDR_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_PHONE: {
@@ -252,7 +252,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_PHONE_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_EMAIL: {
@@ -263,7 +263,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_EMAIL_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_PORTRAIT: {
@@ -274,7 +274,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_PORTRAIT_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_THUMBNAIL: {
@@ -285,7 +285,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_THUMBNAIL_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_TWITTER: {
@@ -296,7 +296,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_TWITTER_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.type,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.DELETE_CONTACT_GROUP: {
@@ -307,7 +307,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.DELETE_CONTACT_GROUP_SUCCESS: {
             return Object.assign({}, state, {
                 status: cst.LIST_CONTACTS,
-                data: state.data.filter(a => a._id == action.payload ? null : a)
+                data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
         case cst.SELECT_CONTACT_NULL: {            
@@ -319,7 +319,7 @@ const addr_bookReducer = (state = initialStates, action) => {
         case cst.SELECT_A_CONTACT_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
-                selectedContact: state.data.filter(a => a._id == action.payload ? a : null)
+                selectedContact: state.data.filter(a => a._id === action.payload ? a : null)
             })
         }
         default: return state

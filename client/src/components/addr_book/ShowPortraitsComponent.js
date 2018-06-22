@@ -5,10 +5,16 @@ import actions from '../../actions/addr_book/actions'
 import requireAuth from '../../components/requireAuth'
 
 class ShowPortraitsComponent extends Component {
+    constructor(props) {
+        super(props)
+        this.props.showPortraitByContact()
+    }
+
     render() {
         const { data, deletePortrait } = this.props
         return (
             <div>
+            {data.length > 0 &&
                 <table align="center" style={{ 'width': '80%' }}><tbody>
                     {data.map((aUnit, index) =>
                         <tr key={index}><td>
@@ -28,6 +34,10 @@ class ShowPortraitsComponent extends Component {
                         </td></tr>
                     )}
                 </tbody></table>
+                }
+                { data.length === 0 &&
+                <h1 align="center">Nothing to Show!</h1>
+                }
             </div>
         )
     }

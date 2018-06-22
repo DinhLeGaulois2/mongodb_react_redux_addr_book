@@ -8,7 +8,8 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 
 // DB Setup
-mongoose.connect('mongodb://localhost:27017/auth');
+mongoose.connect('mongodb://localhost:27017/addr_book');
+var db = mongoose.connection;
 
 // App Setup
 app.use(morgan('combined'));
@@ -24,5 +25,16 @@ require("./routes/auth-routes.js")(app);
 // server Setup
 const port = process.env.PORT || 3090;
 const server = http.createServer(app);
-server.listen(port);
-console.log('Server listening on:', port);
+
+var initValues = require("./data/initDataController.js");
+
+const startServer = () => {    
+    server.listen(port, () => {
+        console.log("App listening on PORT: " + port);
+    });
+}
+
+// "startServer" will be a callback
+// Explanation: we start the server only when every init
+//    values are inserted
+initValues(startServer)
