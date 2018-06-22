@@ -9,8 +9,14 @@ var Portraits = require('../models/portraits.js');
 var Thumbnails = require('../models/thumbnails.js');
 var Twitter = require('../models/twitter.js');
 
+
+const passportService = require('../services/passport');
+const passport = require('passport');
+
+const requireAuth = passport.authenticate('jwt', { session: false });
+
 module.exports = function (app) {
-    app.post("/api/add/address", (req, res, next) => {
+    app.post("/api/add/address", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             type: obj.data.type,
@@ -32,14 +38,14 @@ module.exports = function (app) {
         })
     })
 
-    app.post("/api/add/all/contacts", (req, res, next) => {
+    app.post("/api/add/all/contacts", requireAuth, (req, res, next) => {
         Contacts.insertMany(data2Insert, (err, db) => {
             if (err) throw next(err)
             res.status(200).json({ msg: "Insertion: Success!" })
         })
     })
 
-    app.post("/api/add/contact", (req, res, next) => {
+    app.post("/api/add/contact", requireAuth, (req, res, next) => {
         let obj = req.body
         Contacts.find(obj, (err, db) => {
             if (err) throw next(err)
@@ -54,7 +60,7 @@ module.exports = function (app) {
         )
     })
 
-    app.post("/api/add/email", (req, res, next) => {
+    app.post("/api/add/email", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             type: obj.data.type,
@@ -74,7 +80,7 @@ module.exports = function (app) {
         )
     })
 
-    app.post("/api/add/group", (req, res, next) => {
+    app.post("/api/add/group", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             name: obj.data.name,
@@ -93,7 +99,7 @@ module.exports = function (app) {
         )
     })
 
-    app.post("/api/add/phone", (req, res, next) => {
+    app.post("/api/add/phone", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             type: obj.data.type,
@@ -113,7 +119,7 @@ module.exports = function (app) {
         )
     })
 
-    app.post("/api/add/portrait", (req, res, next) => {
+    app.post("/api/add/portrait", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             mime_type: obj.data.mime_type,
@@ -133,7 +139,7 @@ module.exports = function (app) {
         )
     })
 
-    app.post("/api/add/thumbnail", (req, res, next) => {
+    app.post("/api/add/thumbnail", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             mime_type: obj.data.mime_type,
@@ -153,7 +159,7 @@ module.exports = function (app) {
         )
     })
 
-    app.post("/api/add/twitter", (req, res, next) => {
+    app.post("/api/add/twitter", requireAuth, (req, res, next) => {
         let obj = req.body
         let data2Insert = {
             name: obj.data.name,
