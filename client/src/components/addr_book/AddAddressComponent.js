@@ -5,7 +5,6 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import actions from '../../actions/addr_book/actions'
 import requireAuth from '../../components/requireAuth';
-import cst from '../../constants/addr_book/cst'
 
 const validate = values => {
     const errors = {}

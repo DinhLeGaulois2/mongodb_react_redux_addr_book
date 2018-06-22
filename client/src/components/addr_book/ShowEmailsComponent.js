@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import '../../style.scss'
 import { connect } from 'react-redux'
 import actions from '../../actions/addr_book/actions'
+import requireAuth from '../../components/requireAuth'
 
 class ShowEmailsComponent extends Component {
     render() {
