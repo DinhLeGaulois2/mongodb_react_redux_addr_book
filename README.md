@@ -17,6 +17,14 @@ Building a project based on an EER (Enhanced Entity-Relationship). The goal is t
 
 ---
 
+## Technologies
+> * **Security**: **JWT-simple**, **bcrypt-nodejs**, **passport** (**passport-jwt**, **passport-local**)
+> * **Front End**: **React-Redux**
+> * **Back End**: **Express/Node.js** + **Sequelize** (ORM)
+> * **Database**: **mySQL**
+
+----
+
 ## User-Interface
 ### Listing All Contact
 
@@ -34,20 +42,13 @@ Building a project based on an EER (Enhanced Entity-Relationship). The goal is t
 
 ## Execution
 
-> 1 - Create a database name '**addr_book**'.<br/>
-> 2 - Execute (on the application's **root** folder): **npm install** (to install **dependencies**)<br/>
-> 3 - Execute (on the application's **root** folder): **npm run build** (to run the **server**)<br/>
-> 4 - Open your web browser (***Firefox***, ***Chrome***, etc.) then, enter: **localhost:3000**<br/>
-
----------------
-
-## Configuration (VERY IMPORTANT)
-
-At the project's root folder ([here](https://github.com/DinhLeGaulois2/mongodb_react_redux_addr_book/blob/master/server.js)), we have a file name "**server.js**", by the end, we have:
-
-![alt text](assets/img/initOrNotInit.jpg)
-
-It's very important to follow the instruction, otherwise, you could have very disappointed surprises ...
+> 1 - Start your database...
+>
+> 2 - Open a terminal, and execute (in the folder "**server**"): **npm install** (to install **dependencies**). Then **npm run dev** to start the server.
+> 
+> 3 - Open ANOTHER termimal, and execute (in the folder "**client**"): **npm install** (to install **dependencies**). Then **npm run start** to start the **user interface**.
+>
+> 4 - Open your web browser (***Firefox***, ***Chrome***, etc.) then, enter: **localhost:3000**
 
 ---------------
 

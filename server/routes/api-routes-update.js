@@ -9,7 +9,6 @@ var Portraits = require('../models/portraits.js');
 var Thumbnails = require('../models/thumbnails.js');
 var Twitter = require('../models/twitter.js');
 
-
 const passportService = require('../services/passport');
 const passport = require('passport');
 
