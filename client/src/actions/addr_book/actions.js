@@ -171,10 +171,25 @@ const addr_book_action = {
     selectAContact: (id) => {
         return dispatch => {
             addr_book_action.aContact = id
-            dispatch({
-                type: cst.SELECT_A_CONTACT_SUCCESS,
-                payload: id
+            axios.get("http://localhost:3090/api/get/contact/" + id, {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
             })
+                .then(response => {
+
+                    // dispatch({
+                    //     type: cst.ADD_TWITTER_SUCCESS,
+                    //     payload: response.data
+                    // })
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("action, selectAContact, response: " + JSON.stringify(response, null, 5))
+                    dispatch({
+                        type: cst.SELECT_A_CONTACT_SUCCESS,
+                        payload: id
+                    })
+                })
+                .catch(err => { alert(err) })
         }
     },
 

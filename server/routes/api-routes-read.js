@@ -24,6 +24,44 @@ module.exports = function (app) {
             .catch(next)
     })
 
+    app.get("/api/get/contact/:id", requireAuth, (req, res, next) => {
+        const contactId = objectId(req.params.id);
+        let result = {}
+        Contacts.find({ _id: contactId })
+            .then(data => {
+                result.contact = data[0];
+                Portraits.find({ "contactId": contactId })
+                    .then(data => {
+                        if (data.length) result.portraits = data;
+                        Emails.find({ "contactId": contactId })
+                            .then(data => {
+                                if (data.length) result.emails = data;
+                                Thumbnails.find({ "contactId": contactId })
+                                    .then(data => {
+                                        if (data.length) result.thumbnails = data;
+                                        Twitter.find({ "contactId": contactId })
+                                            .then(data => {
+                                                if (data.length) result.twitters = data;
+                                                Groups.find({ "contactId": contactId })
+                                                    .then(data => {
+                                                        if (data.length) result.groups = data;
+                                                        Addresses.find({ "contactId": contactId })
+                                                            .then(data => {
+                                                                if (data.length) result.addresses = data;
+                                                                Phones.find({ "contactId": contactId })
+                                                                    .then(data => {
+                                                                        if (data.length) result.phones = data;
+                                                                        res.status(200).json(result)
+                                                                    }).catch(next)
+                                                            }).catch(next)
+                                                    }).catch(next)
+                                            }).catch(next)
+                                    }).catch(next)
+                            }).catch(next)
+                    }).catch(next)
+            }).catch(next)
+    })
+
     app.get("/api/get/phones", requireAuth, (req, res, next) => {
         Phones.find()
             .then(data => res.status(200).json(data))
@@ -43,7 +81,7 @@ module.exports = function (app) {
     })
 
     app.get("/api/get/addresse/contact/:id", requireAuth, (req, res, next) => {
-        Addresses.find()
+        Addresses.find({ "contactId": objectId(req.params.id) })
             .then(data => {
                 res.status(200).json(data)
             })

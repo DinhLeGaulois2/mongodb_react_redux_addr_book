@@ -2,213 +2,168 @@ import cst from '../../constants/addr_book/cst'
 
 const initialStates = {
     data: [],
-    selectedContact: [],
-    status: cst.LIST_THUMBNAILS,
+    selectedContactId: [],
+    status: ""
 }
 
 const addr_bookReducer = (state = initialStates, action) => {
     switch (action.type) {
-        case cst.ADD_CONTACT: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
         case cst.ADD_CONTACT_SUCCESS: {
             return Object.assign({}, state, {
+                data: action.payload,
                 status: action.type,
-                selectedContact: []
+                selectedContactId: []
             })
         }
-
-        case cst.ADD_GROUP: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
         case cst.ADD_GROUP_SUCCESS: {
             return Object.assign({}, state, {
-                status: action.type,
+                // data: state.data.map(d => d._id == state.selectedContactId ? d.)
+                // status: action.type,
             })
         }
-
         case cst.ADD_ADDR: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_ADDR_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_PHONE: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_PHONE_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_EMAIL: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_EMAIL_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_PORTRAIT: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_PORTRAIT_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_THUMBNAIL: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_THUMBNAIL_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_TWITTER: {
             return Object.assign({}, state, {
                 status: action.type,
             })
         }
-
         case cst.ADD_TWITTER_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
             })
-        }
-
-        case cst.LIST_CONTACTS: {
+        } case cst.LIST_CONTACTS: {
             return Object.assign({}, state, {
-                status: action.type,
+
             })
         }
-
         case cst.LIST_CONTACTS_SUCCESS: {
             return Object.assign({}, state, {
-                status: action.type,
-                selectedContact: [],
                 data: action.payload
             })
         }
 
-        case cst.LIST_EMAIL_BY_CONTACT_ID: {
+        case cst.LIST_ADDRESSES: {
             return Object.assign({}, state, {
-                status: action.type,
+
+            })
+        }
+        case cst.LIST_ADDRESSES_SUCCESS: {
+            return Object.assign({}, state, {
+
             })
         }
 
-        case cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS: {
+        case cst.LIST_PHONES: {
             return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
+
+            })
+        }
+        case cst.LIST_PHONES_SUCCESS: {
+            return Object.assign({}, state, {
+
             })
         }
 
-        case cst.LIST_PHONE_BY_CONTACT_ID: {
+        case cst.LIST_EMAILS: {
             return Object.assign({}, state, {
-                status: action.type,
+
+            })
+        }
+        case cst.LIST_EMAILS_SUCCESS: {
+            return Object.assign({}, state, {
+
             })
         }
 
-        case cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS: {
+        case cst.LIST_GROUPS: {
             return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
+
+            })
+        }
+        case cst.LIST_GROUPS_SUCCESS: {
+            return Object.assign({}, state, {
+
             })
         }
 
-        case cst.LIST_ADDR_BY_CONTACT_ID: {
+        case cst.LIST_TWITTER: {
             return Object.assign({}, state, {
-                status: action.type,
+
+            })
+        }
+        case cst.LIST_TWITTER_SUCCESS: {
+            return Object.assign({}, state, {
+
+            })
+        }
+        case cst.LIST_THUMBNAILS: {
+            return Object.assign({}, state, {
+
+            })
+        }
+        case cst.LIST_THUMBNAILS_SUCCESS: {
+            return Object.assign({}, state, {
+
             })
         }
 
-        case cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS: {
+        case cst.LIST_PORTRAITS: {
             return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
+
             })
         }
-
-        case cst.LIST_GROUP_BY_CONTACT_ID: {
+        case cst.LIST_PORTRAITS_SUCCESS: {
             return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
 
-        case cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
-            })
-        }
-
-        case cst.LIST_TWITTER_BY_CONTACT_ID: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
-            })
-        }
-
-
-        case cst.LIST_THUMBNAIL_BY_CONTACT_ID: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
-            })
-        }
-
-
-        case cst.LIST_PORTRAIT_BY_CONTACT_ID: {
-            return Object.assign({}, state, {
-                status: action.type,
-            })
-        }
-
-        case cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS: {
-            return Object.assign({}, state, {
-                status: action.type,
-                data: action.payload
             })
         }
         case cst.DELETE_CONTACT: {
@@ -310,16 +265,16 @@ const addr_bookReducer = (state = initialStates, action) => {
                 data: state.data.filter(a => a._id === action.payload ? null : a)
             })
         }
-        case cst.SELECT_CONTACT_NULL: {            
+        case cst.SELECT_CONTACT_NULL: {
             return Object.assign({}, state, {
-                selectedContact: {}
+                selectedContactId: {}
             })
         }
 
         case cst.SELECT_A_CONTACT_SUCCESS: {
             return Object.assign({}, state, {
                 status: action.type,
-                selectedContact: state.data.filter(a => a._id === action.payload ? a : null)
+                selectedContactId: state.data.filter(a => a._id === action.payload ? a : null)
             })
         }
         default: return state

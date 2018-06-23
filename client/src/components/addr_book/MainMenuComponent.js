@@ -4,17 +4,17 @@ import requireAuth from '../requireAuth'
 import '../HeaderStyle.css';
 import '../../style.scss'
 
-import AddUIComponent from './AddUIComponent'
-import DisplayUIComponent from './DisplayUIComponent'
+import AddContactComponent from './AddContactComponent'
+import ShowContactsComponent from './ShowContactsComponent'
 
 const MainMenuComponent = ({ match }) =>
     <div>
         <div style={{ "backgroundColor": "#1b5c71", "padding": "5px" }}>
-            <NavLink to={`${match.url}/add`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add</NavLink>
-            <NavLink to={`${match.url}/display`} className="navLink" strict activeStyle={{ color: 'blue' }}>Display</NavLink>
+            <NavLink to={`${match.url}/add`} className="navLink" strict activeStyle={{ color: 'blue' }}>Add Contact</NavLink>
+            <NavLink to={`${match.url}/display`} className="navLink" strict activeStyle={{ color: 'blue' }}>Display Contacts</NavLink>
         </div>
-        <Route path={`${match.url}/add`} component={AddUIComponent} />
-        <Route path={`${match.url}/display`} component={DisplayUIComponent} />
+        <Route path={`${match.url}/add`} component={AddContactComponent} />
+        <Route path={`${match.url}/display`} component={ShowContactsComponent} />
     </div>
 
 export default requireAuth(MainMenuComponent)
