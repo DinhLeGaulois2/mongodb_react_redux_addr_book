@@ -5,16 +5,18 @@ const initialStates = {
     selectedContact: [],
     status: action.type,
     isList: true,
-    isAddWithContact: false
+    isAddContactSelected: false
 }
 
 const addr_bookReducer = (state = initialStates, action) => {
     switch (action.type) {
-        case cst.ADD_CONTACT: {
+        case cst.ADD_WITH_CONTACT: {
             return Object.assign({}, state, {
-                data: data.push(action.payload),
-                selectedContact: action.payload,
-                status: action.type
+                data: action.payload,
+                selectedContact: [],
+                status: action.type,
+                isList: true,
+                isAddContactSelected: true
             })
         }
         case cst.DELETE_CONTACT: {
@@ -26,85 +28,89 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
         }
         case cst.DELETE_GROUP: {
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.groups._id == action.payload ? null : c)
+            })
+
             return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.DELETE_ADDR: {
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.addresses._id == action.payload ? null : c)
+            })
+
             return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.DELETE_PHONE: {
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.phones._id == action.payload ? null : c)
+            })
+
             return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.DELETE_EMAIL: {
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.emails._id == action.payload ? null : c)
+            })
+
             return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.DELETE_PORTRAIT: {
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.portraits._id == action.payload ? null : c)
+            })
+
             return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.DELETE_THUMBNAIL: {
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.thumbnails._id == action.payload ? null : c)
+            })
+
             return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.DELETE_TWITTER: {
-            return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
+            const aContact = Object.assign({}, state.selectedContact, {
+                selectedContact: state.selectedContact.filter(c => c.twitters._id == action.payload ? null : c)
             })
-        }
-        case cst.DELETE_CONTACT_GROUP: {
-            return Object.assign({}, state, {
-                data: [],
-                selectedContact: [],
-                status: action.type,
-                isList: true,
-                isAddWithContact: false
 
+            return Object.assign({}, state, {
+                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                selectedContact: aContact,
+                status: action.type
             })
         }
         case cst.GET_ALL_CONTACT: {
             return Object.assign({}, state, {
-                data: [],
+                data: action.payload,
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_CONTACTS: {
@@ -113,7 +119,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_ADDRESSES: {
@@ -122,7 +128,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_PHONES: {
@@ -131,7 +137,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_EMAILS: {
@@ -140,7 +146,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_GROUPS: {
@@ -149,7 +155,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_TWITTER: {
@@ -158,7 +164,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_THUMBNAILS: {
@@ -167,7 +173,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_PORTRAITS: {
@@ -176,7 +182,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
 
             })
         }
@@ -192,7 +198,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_GROUP: {
@@ -201,7 +207,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_ADDR: {
@@ -210,7 +216,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_PHONE: {
@@ -219,7 +225,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_EMAIL: {
@@ -228,7 +234,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_PORTRAIT: {
@@ -237,7 +243,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_THUMBNAIL: {
@@ -246,7 +252,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_TWITTER: {
@@ -255,7 +261,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         case cst.UPDATE_CONTACT_GROUP: {
@@ -264,7 +270,7 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddWithContact: false
+                isAddContactSelected: false
             })
         }
         default: return state

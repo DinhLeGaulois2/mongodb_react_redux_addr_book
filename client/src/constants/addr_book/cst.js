@@ -1,5 +1,5 @@
 const cst = {
-    ADD_CONTACT: "add_contact",
+    ADD_WITH_CONTACT: "add_with_contact",
 
     DELETE_CONTACT: "delete_contact",
     DELETE_GROUP: "delete_group",
@@ -9,7 +9,6 @@ const cst = {
     DELETE_PORTRAIT: "delete_portrait",
     DELETE_THUMBNAIL: "delete_thumbnail",
     DELETE_TWITTER: "delete_twitter",
-    DELETE_CONTACT_GROUP: "delete_contact_group",
 
     DISPLAY_LIST_CONTACTS: "DISPLAY_LIST_contacts",
     DISPLAY_LIST_ADDRESSES: "DISPLAY_LIST_addresses",
@@ -22,7 +21,11 @@ const cst = {
     
     GET_ALL_CONTACT: "get_all_contact",
 
-    SELECT_A_CONTACT: "select_a_contact",
+    SELECT_A_CONTACT2DISPLAY: "select_a_contact2display",
+    DESELECT_A_CONTACT2DISPLAY: "deselect_a_contact2display",
+
+    SELECT_A_CONTACT2add: "select_a_contact2add",
+    DESELECT_A_CONTACT2add: "deselect_a_contact2add",
     
     UPDATE_CONTACT: "update_contact",
     UPDATE_GROUP: "update_group",
