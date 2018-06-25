@@ -1,5 +1,6 @@
 import React from 'react'
 import requireAuth from '../requireAuth'
+import { connect } from 'react-redux'
 import { Route, NavLink } from "react-router-dom";
 import '../HeaderStyle.css';
 
@@ -13,8 +14,21 @@ import AddThumbnailComponent from './AddThumbnailComponent'
 import AddTwitterComponent from './AddTwitterComponent'
 
 class AddUIComponent extends React.Component {
+    constructor(props) {
+        super(props)
+        if (this.props.contacts.length === 0)
+            this.props.getAllContact()
+    }
+
+    renderNavLinks() {
+        if (!this.props.isDecidedAbout4AddContact)
+            return (
+                <div></div>
+            )
+    }
+
     render() {
-        const { match } = this.props
+        const { match, selectedContactId, contacts } = this.props
         return (
             <div>
                 <div style={{ "backgroundColor": "black" }}>
@@ -46,4 +60,12 @@ class AddUIComponent extends React.Component {
     }
 }
 
-export default requireAuth(AddUIComponent)
+const mapStateToProps = (state) => ({
+    contacts: state.adrBook.data,
+    selectedContactId: state.adrBook.selectedContactId,
+    status: "",
+    isList: state.adrBook.isList,
+    isDecidedAbout4AddContact: state.adrBook.isDecidedAbout4AddContact
+})
+
+export default connect(mapStateToProps)(requireAuth(AddUIComponent))

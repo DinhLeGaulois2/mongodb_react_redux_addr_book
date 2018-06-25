@@ -2,7 +2,22 @@ import axios from "axios"
 import cst from '../../constants/addr_book/cst'
 
 const addr_book_action = {
-    aContact: "",
+    getAllContact: () => {
+        return dispatch => {
+            axios.get("http://localhost:3090/api/get/contacts", {
+                headers: {
+                    'authorization': localStorage.getItem('token')
+                }
+            })
+                .then(response => {
+                    dispatch({
+                        type: cst.GET_ALL_CONTACT,
+                        payload: response.data
+                    })
+                })
+                .catch(err => alert(err))
+        }
+    },
 
     addAddress: (data) => {
         return dispatch => {
@@ -17,7 +32,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_ADDR_SUCCESS,
+                        type: cst.ADD_ADDR,
                         payload: response.data
                     })
                 })
@@ -34,7 +49,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_CONTACT_SUCCESS,
+                        type: cst.ADD_CONTACT,
                         payload: response.data
                     })
                 })
@@ -55,7 +70,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_EMAIL_SUCCESS,
+                        type: cst.ADD_EMAIL,
                         payload: response.data
                     })
                 })
@@ -76,7 +91,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_GROUP_SUCCESS,
+                        type: cst.ADD_GROUP,
                         payload: response.data
                     })
                 })
@@ -97,7 +112,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_PHONE_SUCCESS,
+                        type: cst.ADD_PHONE,
                         payload: response.data
                     })
                 })
@@ -118,7 +133,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_THUMBNAIL_SUCCESS,
+                        type: cst.ADD_THUMBNAIL,
                         payload: response.data
                     })
                 })
@@ -139,7 +154,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_THUMBNAIL_SUCCESS,
+                        type: cst.ADD_THUMBNAIL,
                         payload: response.data
                     })
                 })
@@ -160,7 +175,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.ADD_TWITTER_SUCCESS,
+                        type: cst.ADD_TWITTER,
                         payload: response.data
                     })
                 })
@@ -179,13 +194,13 @@ const addr_book_action = {
                 .then(response => {
 
                     // dispatch({
-                    //     type: cst.ADD_TWITTER_SUCCESS,
+                    //     type: cst.ADD_TWITTER,
                     //     payload: response.data
                     // })
                     //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                     console.log("action, selectAContact, response: " + JSON.stringify(response, null, 5))
                     dispatch({
-                        type: cst.SELECT_A_CONTACT_SUCCESS,
+                        type: cst.SELECT_A_CONTACT,
                         payload: id
                     })
                 })
@@ -197,7 +212,7 @@ const addr_book_action = {
         return dispatch => {
             addr_book_action.aContact = data.selectAContact
             dispatch({
-                type: cst.SELECT_A_CONTACT_SUCCESS,
+                type: cst.SELECT_A_CONTACT,
                 payload: data.selectAContact
             })
         }
@@ -216,7 +231,7 @@ const addr_book_action = {
                     //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
                     console.log("actions, showContacts! response: " + JSON.stringify(response, null, 5))
                     dispatch({
-                        type: cst.LIST_CONTACTS_SUCCESS,
+                        type: cst.DISPLAY_LIST_CONTACTS,
                         payload: response.data
                     })
                 })
@@ -233,7 +248,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.LIST_GROUPS_SUCCESS,
+                        type: cst.DISPLAY_LIST_GROUPS,
                         payload: response.data
                     })
                 })
@@ -251,7 +266,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_ADDR_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_ADDR_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -270,7 +285,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_PHONE_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_PHONE_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -289,7 +304,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_EMAIL_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_EMAIL_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -308,7 +323,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_GROUP_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_GROUP_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -327,7 +342,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_TWITTER_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_TWITTER_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -346,7 +361,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_THUMBNAIL_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_THUMBNAIL_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -365,7 +380,7 @@ const addr_book_action = {
                 })
                     .then(response => {
                         dispatch({
-                            type: cst.LIST_PORTRAIT_BY_CONTACT_ID_SUCCESS,
+                            type: cst.DISPLAY_LIST_PORTRAIT_BY_CONTACT_ID,
                             payload: response.data
                         })
                     })
@@ -383,7 +398,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_ADDR_SUCCESS,
+                        type: cst.DELETE_ADDR,
                         payload: id
                     })
                 })
@@ -400,7 +415,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_CONTACT_SUCCESS,
+                        type: cst.DELETE_CONTACT,
                         payload: id
                     })
                 })
@@ -417,7 +432,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_EMAIL_SUCCESS,
+                        type: cst.DELETE_EMAIL,
                         payload: id
                     })
                 })
@@ -434,7 +449,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_GROUP_SUCCESS,
+                        type: cst.DELETE_GROUP,
                         payload: id
                     })
                 })
@@ -451,7 +466,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_PHONE_SUCCESS,
+                        type: cst.DELETE_PHONE,
                         payload: id
                     })
                 })
@@ -468,7 +483,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_PORTRAIT_SUCCESS,
+                        type: cst.DELETE_PORTRAIT,
                         payload: id
                     })
                 })
@@ -485,7 +500,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_THUMBNAIL_SUCCESS,
+                        type: cst.DELETE_THUMBNAIL,
                         payload: id
                     })
                 })
@@ -502,7 +517,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.DELETE_TWITTER_SUCCESS,
+                        type: cst.DELETE_TWITTER,
                         payload: id
                     })
                 })
@@ -519,7 +534,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_ADDR_SUCCESS,
+                        type: cst.UPDATE_ADDR,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -535,7 +550,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_CONTACT_SUCCESS,
+                        type: cst.UPDATE_CONTACT,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -551,7 +566,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_EMAIL_SUCCESS,
+                        type: cst.UPDATE_EMAIL,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -567,7 +582,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_GROUP_SUCCESS,
+                        type: cst.UPDATE_GROUP,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -583,7 +598,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_PHONE_SUCCESS,
+                        type: cst.UPDATE_PHONE,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -599,7 +614,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_PORTRAIT_SUCCESS,
+                        type: cst.UPDATE_PORTRAIT,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -615,7 +630,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_THUMBNAIL_SUCCESS,
+                        type: cst.UPDATE_THUMBNAIL,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -631,7 +646,7 @@ const addr_book_action = {
             })
                 .then(response => {
                     dispatch({
-                        type: cst.UPDATE_TWITTER_SUCCESS,
+                        type: cst.UPDATE_TWITTER,
                     })
                 })
                 .catch(err => { alert(err) })
@@ -651,7 +666,7 @@ const addr_book_action = {
                     .then(response => {
                         dispatch({ type: mainStatus })
                         dispatch({
-                            type: cst.LIST_CONTACTS_SUCCESS,
+                            type: cst.DISPLAY_LIST_CONTACTS,
                             payload: response.data
                         })
                     })
