@@ -3,7 +3,7 @@ import cst from '../../constants/addr_book/cst'
 const initialStates = {
     data: [],
     selectedContact: [],
-    status: action.type,
+    status: "",
     isList: true,
     isAddContactSelected: false
 }
@@ -38,7 +38,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -49,7 +49,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -60,7 +60,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -71,7 +71,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -82,7 +82,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -93,7 +93,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -104,7 +104,7 @@ const addr_bookReducer = (state = initialStates, action) => {
             })
 
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == aContact._id ? aContact : d),
+                data: state.data.map(d => d._id === aContact._id ? aContact : d),
                 selectedContact: aContact,
                 status: action.type
             })
@@ -115,7 +115,6 @@ const addr_bookReducer = (state = initialStates, action) => {
                 selectedContact: [],
                 status: action.type,
                 isList: true,
-                isAddContactSelected: false
             })
         }
         case cst.DISPLAY_LIST_CONTACTS: {
@@ -185,19 +184,18 @@ const addr_bookReducer = (state = initialStates, action) => {
             return Object.assign({}, state, {
                 status: action.type,
                 selectedContact: state.data.filter(a => a._id === action.payload._id ? a : null),                
-                status: action.type,
                 isList: false
             })
         }
         case cst.UPDATE_CONTACT: {
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == state.selectedContact._id ? state.selectedContact : d),
+                data: state.data.map(d => d._id === state.selectedContact._id ? state.selectedContact : d),
                 status: action.type,
             })
         }
         case cst.UPDATE_GROUP: {
             return Object.assign({}, state, {
-                data: state.data.map(d => d._id == state.selectedContact._id ? state.selectedContact : d),
+                data: state.data.map(d => d._id === state.selectedContact._id ? state.selectedContact : d),
                 status: action.type,
             })
         }

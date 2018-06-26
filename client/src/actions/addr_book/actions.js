@@ -10,6 +10,8 @@ const addr_book_action = {
                 }
             })
                 .then(response => {
+                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
+                    console.log("actions, getAllContact, response: " + JSON.stringify(response, null, 5))
                     dispatch({
                         type: cst.GET_ALL_CONTACT,
                         payload: response.data
@@ -228,11 +230,12 @@ const addr_book_action = {
                 }
             })
                 .then(response => {
-                    //KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK
-                    console.log("actions, showContacts! response: " + JSON.stringify(response, null, 5))
+                    dispatch({
+                        type: cst.GET_ALL_CONTACT,
+                        payload: response.data
+                    })
                     dispatch({
                         type: cst.DISPLAY_LIST_CONTACTS,
-                        payload: response.data
                     })
                 })
                 .catch(err => alert(err))

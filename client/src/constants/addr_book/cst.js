@@ -24,8 +24,8 @@ const cst = {
     SELECT_A_CONTACT2DISPLAY: "select_a_contact2display",
     DESELECT_A_CONTACT2DISPLAY: "deselect_a_contact2display",
 
-    SELECT_A_CONTACT2add: "select_a_contact2add",
-    DESELECT_A_CONTACT2add: "deselect_a_contact2add",
+    SELECT_A_CONTACT2ADD: "select_a_contact2add",
+    DESELECT_A_CONTACT2ADD: "deselect_a_contact2add",
     
     UPDATE_CONTACT: "update_contact",
     UPDATE_GROUP: "update_group",
