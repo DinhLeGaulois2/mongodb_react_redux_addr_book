@@ -55,5 +55,4 @@ Front-end and Back-end could be deployed on different servers, independently. We
 ---------------
 
 ## Author
-* Dinh HUYNH - All Rights Reserved!
-* dinh.hu19@yahoo.com
+* Dinh HUYNH
